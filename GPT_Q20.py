@@ -24,12 +24,12 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
         guesser_kargs = {}
     game = Q20Game(
         item=item,
-        answerer_model=args.answerer_model,
-        guesser_model=guesser_model,
-        guesser_tokenizer=guesser_tokenizer,
+        answerer_model_name=args.answerer_model,
+        guesser_model_name=guesser_model,
+        # guesser_tokenizer=guesser_tokenizer,
         num_turns=args.turns,
         temperature=args.temp,
-        openai_api=args.openai_api,
+        # openai_api=args.openai_api,
         guesser_kargs=guesser_kargs,
     )
 
@@ -55,10 +55,10 @@ if __name__ == "__main__":
     # Add an argument for the input file
     parser.add_argument("--input", required=True, help="Input file path")
     parser.add_argument(
-        "--answerer_model", "-a", default="gpt-3.5-turbo", help="answerer model"
+        "--answerer_model", "-a", default="gpt2", help="answerer model"
     )
     parser.add_argument(
-        "--guesser_model", "-g", default="gpt-3.5-turbo", help="guesser model"
+        "--guesser_model", "-g", default="gpt2", help="guesser model"
     )
     parser.add_argument("--suffix", "-s", default="vanilla", help="prefix")
     parser.add_argument("--user", default=None, help="User name for user mode")
