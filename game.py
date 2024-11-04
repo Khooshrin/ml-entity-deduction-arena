@@ -5,7 +5,7 @@ import platform
 import random
 import re
 from typing import List, Optional
-
+from cot import COT
 import anthropic
 import openai
 import openai.api_requestor
@@ -32,6 +32,8 @@ class Q20Game:
         openai_api: bool = True,
         openai_api_key: Optional[str] = None,
         guesser_kargs={},
+        cot: bool = False,
+        cot_kargs={},
     ) -> None:
         self.item = item
         self.answerer_model = answerer_model
@@ -50,6 +52,7 @@ class Q20Game:
             f"Now start asking a question."
         )
         self.guesser_win = False
+        self.cot = None
         if openai_api_key is not None:
             openai.api_key = openai_api_key
 
@@ -66,6 +69,21 @@ class Q20Game:
         self.anthropic_api = Anthropic()
 
         self.guesser_messages = []
+        if cot:
+            self.cot = COT(
+                item, 
+                answerer_model, 
+                guesser_model, 
+                num_turns, 
+                temperature, 
+                openai_api, 
+                guesser_tokenizer, 
+                guesser_kargs, 
+                self.vicuna_prompt, 
+                self.guesser_api_base,
+                self.anthropic_api,
+                cot_kargs
+            )
 
     def confusion_matrix(self, path):
         self.reset()
@@ -116,6 +134,9 @@ class Q20Game:
         logger=LOGGER,
     )
     def guesser(self, messages):
+        if self.cot:
+            print(self.cot)
+
         if isinstance(self.guesser_model, str) and self.guesser_model.startswith(
             "claude"
         ):
