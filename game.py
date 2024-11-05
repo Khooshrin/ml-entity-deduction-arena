@@ -135,7 +135,10 @@ class Q20Game:
     )
     def guesser(self, messages):
         if self.cot:
-            print(self.cot)
+            return {
+                "role": "assistant",
+                "content": self.cot.guess(messages)
+            }
 
         if isinstance(self.guesser_model, str) and self.guesser_model.startswith(
             "claude"

@@ -180,8 +180,8 @@ class COT:
         self.num_turns = num_turns
         self.inference_count = 0
         
-    def guess(self):
-        tree = self.generate_tree()
+    def guess(self, messages):
+        tree = self.generate_tree(messages)
         response = self.choose_branch(tree)
         return {
             "role": "assistant",
