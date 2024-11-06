@@ -1,0 +1,28 @@
+item: Printer
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an object or a thing?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the entity a natural object or a man-made object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the entity a machine or a device?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is the entity a vehicle or a mode of transportation?
+Turn 5, User: No.
+Turn 6, Assistant: Is the entity a tool or a hardware component?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the entity a computer or a computer component?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Is the entity a computer hardware component or a software program?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is the entity a RAM or a CPU component?
+Turn 9, User: No.
+Turn 10, Assistant: Is the entity a hard drive or a storage device?
+Turn 10, User: No.
+Turn 11, Assistant: Is the entity a motherboard or a central processing unit (CPU)?
+Turn 11, User: No.
+Turn 12, Assistant: Is the entity a monitor or a display device?
+Turn 12, User: No.
+Turn 13, Assistant: Is the entity a printer or a plotter?
+Turn 13, User: Bingo!

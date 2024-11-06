@@ -1,0 +1,42 @@
+item: Sunglasses
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the object a tool?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the tool a machine?
+Turn 4, User: No.
+Turn 5, Assistant: Is the tool used for communication?
+Turn 5, User: No.
+Turn 6, Assistant: Is the tool used for transportation?
+Turn 6, User: No.
+Turn 7, Assistant: Is the tool used for construction?
+Turn 7, User: No.
+Turn 8, Assistant: Is the tool used for cooking?
+Turn 8, User: No.
+Turn 9, Assistant: Is the tool used for cleaning?
+Turn 9, User: No.
+Turn 10, Assistant: Is the tool used for writing?
+Turn 10, User: No.
+Turn 11, Assistant: Is the tool used for entertainment?
+Turn 11, User: Maybe.
+Turn 12, Assistant: Is the tool a type of device?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is the device a type of computer?
+Turn 13, User: No.
+Turn 14, Assistant: Is the device a type of phone?
+Turn 14, User: No.
+Turn 15, Assistant: Is the device a type of tablet?
+Turn 15, User: No.
+Turn 16, Assistant: Is the device a type of gaming console?
+Turn 16, User: No.
+Turn 17, Assistant: Is the device a type of printer?
+Turn 17, User: No.
+Turn 18, Assistant: Is the device a type of scanner?
+Turn 18, User: No.
+Turn 19, Assistant: Is the device a type of photocopier?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A book? Is it right?
+Turn 20, User: No.

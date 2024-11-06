@@ -1,0 +1,42 @@
+item: Invisibility cloak | Invisible cloak
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object or a concept?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it something people often use?
+Turn 3, User: Maybe.
+Turn 4, Assistant: Is it a household item?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it a tool used for communication?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a piece of clothing or accessory?
+Turn 6, User: Maybe.
+Turn 7, Assistant: Is it something people often wear?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Is it a mobile device?
+Turn 8, User: Maybe.
+Turn 9, Assistant: Is it something people use to listen to music or audio?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a type of vehicle?
+Turn 10, User: No.
+Turn 11, Assistant: Is it an item people often use to write or draw with?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a type of furniture?
+Turn 12, User: No.
+Turn 13, Assistant: Is it an item people often use for entertainment, such as a game or toy?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it a board game?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a video game?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a type of toy or doll?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Is it a stuffed animal?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a children's toy?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a remote control vehicle?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: It is a type of children's toy. Is it right?
+Turn 20, User: Maybe.
