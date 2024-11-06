@@ -1,0 +1,42 @@
+item: Dumbbell | Dumbbells
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object or a concept?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a human invention or creation?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a natural occurrence or process?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a physical object or entity?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a machine or a tool?
+Turn 6, User: No.
+Turn 7, Assistant: Is it a living organism or a biological entity?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a man-made object or creation?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it a building or a structure?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a technology or an invention?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a vehicle or a mode of transportation?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a piece of furniture or a household item?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a weapon or a tool used for combat?
+Turn 13, User: No.
+Turn 14, Assistant: Is it an artwork or a piece of art?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a sculpture or a painting?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a musical instrument or a piece of music?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a literature or a book?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a movie or a film?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a video game or a computer program?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Radio. Is it right?
+Turn 20, User: No.

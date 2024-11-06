@@ -1,0 +1,42 @@
+item: Guitar
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it an object?
+Turn 1, User: Yes.
+Turn 2, Assistant: Is it a living thing?
+Turn 2, User: No.
+Turn 3, Assistant: Is it a natural occurrence?
+Turn 3, User: No.
+Turn 4, Assistant: Is it man-made?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a machine or equipment?
+Turn 5, User: Maybe.
+Turn 6, Assistant: Can you narrow it down to a specific type of machine or equipment?
+Turn 6, User: Maybe.
+Turn 7, Assistant: Is it a tool or a device?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Can you give a specific example of the type of tool or device?
+Turn 8, User: Maybe.
+Turn 9, Assistant: Does it have any electronic components?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a computer or electronic device?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a robot or a machine that performs tasks?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a mechanical device that moves or operates in some way?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is it a moving object like a car, airplane, or train?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a machine or equipment that operates by using electricity or other forms of energy?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a device that is used in construction or manufacturing?
+Turn 15, User: Yes.
+Turn 16, Assistant: Is it a tool or equipment used in construction, such as a saw, hammer, or drill?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a tool or equipment used in manufacturing, such as a machine or robot?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a tool or equipment used in engineering or design?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a tool or equipment used in transportation or logistics?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is it a tool or equipment used in communication, such as a radio, telephone, or cell phone tower? Is it right?
+Turn 20, User: No.

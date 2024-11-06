@@ -1,0 +1,42 @@
+item: Projector
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the object a tool or a device?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the object a household item?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is the object a piece of furniture?
+Turn 5, User: No.
+Turn 6, Assistant: Is the object used for entertainment?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the object a television?
+Turn 7, User: No.
+Turn 8, Assistant: Is the object a music player?
+Turn 8, User: No.
+Turn 9, Assistant: Is the object a gaming device?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is the object a handheld device?
+Turn 10, User: No.
+Turn 11, Assistant: Is the object a console?
+Turn 11, User: No.
+Turn 12, Assistant: Is the object a computer?
+Turn 12, User: Maybe.
+Turn 13, Assistant: Is the object a laptop?
+Turn 13, User: No.
+Turn 14, Assistant: Is the object a desktop computer?
+Turn 14, User: No.
+Turn 15, Assistant: Is the object a tablet?
+Turn 15, User: No.
+Turn 16, Assistant: Is the object a smartphone?
+Turn 16, User: No.
+Turn 17, Assistant: Is the object a wearable device?
+Turn 17, User: No.
+Turn 18, Assistant: Is the object a printer?
+Turn 18, User: No.
+Turn 19, Assistant: Is the object a scanner?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Could you give me a hint? Is it right?
+Turn 20, User: Maybe.

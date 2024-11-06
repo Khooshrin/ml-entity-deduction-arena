@@ -1,1 +1,43 @@
-
+item: Candle
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it an object?
+Turn 1, User: Yes.
+Turn 2, Assistant: Is it a natural occurrence?
+Turn 2, User: Maybe.
+Turn 3, Assistant: Is it a living thing?
+Turn 3, User: No.
+Turn 4, Assistant: Is it an artificial creation?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it a creation of humans?
+Turn 5, User: Maybe.
+Turn 6, Assistant: Is it a machine?
+Turn 6, User: No.
+Turn 7, Assistant: Can it be a device that is not a machine?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is it a computer?
+Turn 8, User: No.
+Turn 9, Assistant: Can you provide a more specific category or kind of device that?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a tool or a device used for a specific purpose?
+Turn 10, User: Yes.
+Turn 11, Assistant: Can you give me an example of a tool or device used for a specific purpose?
+Turn 11, User: Maybe.
+Turn 12, Assistant: Is it an instrument?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a device?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Can you give me an example of a device?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Can you give me an example of a device that is used for a specific purpose?
+Turn 15, User: Maybe.
+Turn 16, Assistant: Is it a tool?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Can you give me an example of a tool?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is it a specific object?
+Turn 18, User: Yes.
+Turn 19, Assistant: Can you give me an example of a specific object?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: Is it a screwdriver? Is it right?
+Turn 20, User: No.
+n 20, User: Maybe.
