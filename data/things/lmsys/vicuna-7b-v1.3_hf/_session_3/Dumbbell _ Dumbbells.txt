@@ -1,0 +1,42 @@
+item: Dumbbell | Dumbbells
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a plant or an animal?
+Turn 2, User: No.
+Turn 3, Assistant: Is it a natural occurrence or a man-made object?
+Turn 3, User: No.
+Turn 4, Assistant: Is it a physical object that can be seen or touched?
+Turn 4, User: Yes.
+Turn 5, Assistant: Can it fit in a pocket or bag?
+Turn 5, User: No.
+Turn 6, Assistant: Can it be found in nature?
+Turn 6, User: No.
+Turn 7, Assistant: Can it be found in buildings or urban areas?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is it a machine or a device?
+Turn 8, User: No.
+Turn 9, Assistant: Is it an inanimate object?
+Turn 9, User: Yes.
+Turn 10, Assistant: Can it be used for communication or transportation?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a natural resource or a resource for energy?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a man-made structure or an engineering marvel?
+Turn 12, User: Maybe.
+Turn 13, Assistant: Is it a building or a bridge?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a dam or a reservoir?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a road or a train track?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a canal or a river?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a park or a garden?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a forest or a tree?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a mountain or a hill?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A book. Is it right?
+Turn 20, User: Maybe.

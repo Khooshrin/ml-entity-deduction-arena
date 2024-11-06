@@ -1,0 +1,42 @@
+item: Invisibility cloak | Invisible cloak
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a human-made object?
+Turn 2, User: Maybe.
+Turn 3, Assistant: Is it a machine?
+Turn 3, User: No.
+Turn 4, Assistant: Is it a physical object that can be found indoors?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it a furniture?
+Turn 5, User: No.
+Turn 6, Assistant: Is it an appliance?
+Turn 6, User: Maybe.
+Turn 7, Assistant: Is it a kitchen appliance?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a bathroom appliance?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a common household item?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is it a lamp?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a computer?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a television?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a book?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it a novel?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a non-fiction book?
+Turn 15, User: Maybe.
+Turn 16, Assistant: Is it a cookbook?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a textbook?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a children's book?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a comic book?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: Is it a coloring book? Is it right?
+Turn 20, User: No.

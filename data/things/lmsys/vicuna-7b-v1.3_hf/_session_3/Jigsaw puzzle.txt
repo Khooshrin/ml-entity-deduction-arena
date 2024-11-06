@@ -1,0 +1,42 @@
+item: Jigsaw puzzle
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an inanimate object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a tool or a machine?
+Turn 3, User: No.
+Turn 4, Assistant: Is it a hardware component?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a part of a building or structure?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a vehicle or mode of transportation?
+Turn 6, User: No.
+Turn 7, Assistant: Is it a natural resource or substance?
+Turn 7, User: No.
+Turn 8, Assistant: Is it an element or compound?
+Turn 8, User: No.
+Turn 9, Assistant: Is it an abstract concept or idea?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is it a mathematical or scientific concept?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a philosophical or ethical concept?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a cultural or historical concept?
+Turn 12, User: Maybe.
+Turn 13, Assistant: Is it a historical event or era?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a cultural or social phenomenon?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a social or cultural movement?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a societal or cultural trend?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Is it a societal or cultural norm?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is it a societal or cultural convention?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a societal or cultural tradition?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: I'll take a guess and say "humanity." Is it right?
+Turn 20, User: No.

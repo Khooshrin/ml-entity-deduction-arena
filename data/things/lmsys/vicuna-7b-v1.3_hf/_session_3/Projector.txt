@@ -1,0 +1,42 @@
+item: Projector
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a thing that can be found in nature?
+Turn 2, User: No.
+Turn 3, Assistant: Is it an object that can be bought or sold?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a product that is used for communication?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a device that can be held in the hand?
+Turn 5, User: No.
+Turn 6, Assistant: Is it an object that is used for entertainment?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a tool used for writing or drawing?
+Turn 7, User: No.
+Turn 8, Assistant: Is it an object used for transportation?
+Turn 8, User: No.
+Turn 9, Assistant: Is it an object used for cooking or preparing food?
+Turn 9, User: No.
+Turn 10, Assistant: Is it an object used for cleaning?
+Turn 10, User: No.
+Turn 11, Assistant: Is it an object used for sports or physical activity?
+Turn 11, User: No.
+Turn 12, Assistant: Is it an object used for personal grooming or hygiene?
+Turn 12, User: No.
+Turn 13, Assistant: Is it an object used for education or learning?
+Turn 13, User: Yes.
+Turn 14, Assistant: Is it an object used for mathematics or numbers?
+Turn 14, User: No.
+Turn 15, Assistant: Is it an object used for music or sound?
+Turn 15, User: No.
+Turn 16, Assistant: Is it an object used for art or design?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Is it an object used for science or research?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is it an object used for religion or spirituality?
+Turn 18, User: No.
+Turn 19, Assistant: Based on your answers, I gather that a product used for communication, entertainment, and possibly education. It is a device that can be held in the hand and is not used for writing, drawing, or transportation. It is not used for personal grooming or hygiene, sports or
+Turn 19, User: Yes. You must guess now, what's it?
+Turn 20, Assistant: Based on your responses, I guess that it is a smartphone. Is it right?
+Turn 20, User: No.

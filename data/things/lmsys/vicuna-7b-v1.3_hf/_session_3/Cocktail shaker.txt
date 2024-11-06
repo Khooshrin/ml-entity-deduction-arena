@@ -1,0 +1,42 @@
+item: Cocktail shaker
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object or a concept?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a human invention or discovery?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a machine or a tool?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it a transportation-related invention or discovery?
+Turn 5, User: No.
+Turn 6, Assistant: Is it an electronic or digital invention or discovery?
+Turn 6, User: No.
+Turn 7, Assistant: Is it related to communication or information technology?
+Turn 7, User: No.
+Turn 8, Assistant: Is it related to energy or power?
+Turn 8, User: Maybe.
+Turn 9, Assistant: Is it a renewable or non-renewable energy source?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a tool or a device used for measurement or calculation?
+Turn 10, User: No.
+Turn 11, Assistant: Is it related to scientific research or discovery?
+Turn 11, User: No.
+Turn 12, Assistant: Is it related to manufacturing or production?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is it a device or tool used for cutting or shaping materials?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a device or tool used for joining or assembling materials?
+Turn 14, User: Yes.
+Turn 15, Assistant: Is it a welding technology or technique?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a joining method used in metalworking or fabrication?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a joining method used in woodworking or cabinetry?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a joining method used in construction or carpentry?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a joining method used in textiles or sewing?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: It's a joining method used in furniture-making. Is it right?
+Turn 20, User: No.

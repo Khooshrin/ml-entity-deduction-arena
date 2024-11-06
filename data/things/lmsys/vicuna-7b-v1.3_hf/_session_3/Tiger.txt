@@ -1,0 +1,36 @@
+item: Tiger
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an animal?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the animal a mammal?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the mammal a sea mammal?
+Turn 4, User: No.
+Turn 5, Assistant: Is the mammal a land mammal?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is the land mammal a cetacean?
+Turn 6, User: No.
+Turn 7, Assistant: Is the land mammal a perissodactyl?
+Turn 7, User: No.
+Turn 8, Assistant: Is the land mammal a sirenian?
+Turn 8, User: No.
+Turn 9, Assistant: Is the land mammal a primate?
+Turn 9, User: No.
+Turn 10, Assistant: Is the land mammal an artiodactyl?
+Turn 10, User: No.
+Turn 11, Assistant: Is the land mammal a rodent?
+Turn 11, User: No.
+Turn 12, Assistant: Is the land mammal a lagomorph?
+Turn 12, User: No.
+Turn 13, Assistant: Is the land mammal a carnivore?
+Turn 13, User: Yes.
+Turn 14, Assistant: Is the land mammal a bear?
+Turn 14, User: No.
+Turn 15, Assistant: Is the land mammal a big cat?
+Turn 15, User: Yes.
+Turn 16, Assistant: Is the land mammal a lion?
+Turn 16, User: No.
+Turn 17, Assistant: Is the land mammal a tiger?
+Turn 17, User: Bingo!

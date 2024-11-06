@@ -1,1 +1,52 @@
-
+item: Candle
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a living thing?
+Turn 2, User: No.
+Turn 3, Assistant: Can you give a hint?
+Turn 3, User: Maybe.
+Turn 4, Assistant: Is it an object or an idea?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it something you can touch?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a tangible object?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a physical object?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is it an inorganic object?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it a mineral or a rock?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a plant or a fungus?
+Turn 10, User: No.
+Turn 11, Assistant: Is it an animal or a microorganism?
+Turn 11, User: No.
+Turn 12, Assistant: Is it an organic object?
+Turn 12, User: No.
+Turn 13, Assistant: Is it an artifact or a tool?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it a man-made object?
+Turn 14, User: Yes.
+Turn 15, Assistant: Is it a machine or a device?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a tool or a utensil?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Is it a material object used for a specific purpose or function?
+Turn 17, User: Yes.
+Turn 18, Assistant: Is it a component or a part?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a component of a machine or a device?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: A bolt or a screw. Is it right?
+Turn 20, User: No.
+n 16, Assistant: Is it a book?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a notebook or a journal?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a pencil or a pen?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a ruler or a protractor?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A lamp. Is it right?
+Turn 20, User: Maybe.

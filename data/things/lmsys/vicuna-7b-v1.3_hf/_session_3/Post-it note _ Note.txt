@@ -1,0 +1,42 @@
+item: Post-it note | Note
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a physical object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a tool or a machine?
+Turn 4, User: No.
+Turn 5, Assistant: Is it an item used for entertainment or leisure?
+Turn 5, User: No.
+Turn 6, Assistant: Is it an object used for communication or information exchange?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a phone or a computer?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a printer or a scanner?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a typewriter or a fax machine?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a radio or a television?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a satellite dish or an antenna?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a cassette player or a CD player?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a record player or a DVD player?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a video game console?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a music player, such as an MP3 player?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a streaming device, such as a Roku or a Chromecast?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a gaming console, but not a video game console?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a remote control for a device?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a set-top box, like a cable box or a satellite receiver?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A game controller. Is it right?
+Turn 20, User: No.
