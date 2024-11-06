@@ -1,0 +1,42 @@
+item: Dumbbell | Dumbbells
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a human?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an animal?
+Turn 2, User: No.
+Turn 3, Assistant: Is the entity a thing or object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the entity a living thing?
+Turn 4, User: No.
+Turn 5, Assistant: Is the entity a non-living thing?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is the entity an inanimate object?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the entity a material object?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is the entity a natural object?
+Turn 8, User: No.
+Turn 9, Assistant: Is the entity a man-made object?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is the entity a machine or device?
+Turn 10, User: No.
+Turn 11, Assistant: Is the entity a tool or equipment?
+Turn 11, User: Yes.
+Turn 12, Assistant: Is the entity a vehicle or mode of transportation?
+Turn 12, User: No.
+Turn 13, Assistant: Is the entity a weapon or a device used for warfare?
+Turn 13, User: No.
+Turn 14, Assistant: Is the entity a piece of clothing or textile?
+Turn 14, User: No.
+Turn 15, Assistant: Is the entity a musical instrument?
+Turn 15, User: No.
+Turn 16, Assistant: Is the entity a piece of furniture or household item?
+Turn 16, User: No.
+Turn 17, Assistant: Is the entity a type of technology or machine?
+Turn 17, User: No.
+Turn 18, Assistant: Is the entity an object used for communication?
+Turn 18, User: No.
+Turn 19, Assistant: Is the entity a scientific or mathematical instrument?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A computer or a tablet. Is it right?
+Turn 20, User: No.

@@ -1,0 +1,42 @@
+item: Chess | Chessboard
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a physical object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a natural occurrence?
+Turn 3, User: No.
+Turn 4, Assistant: Is it man-made?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it an invention?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a machine?
+Turn 6, User: No.
+Turn 7, Assistant: Is it an electronic device?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a tool?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a piece of equipment?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a vehicle?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a device used for communication?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a device used for data processing?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a device used for energy production?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a device used for construction?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a device used for transportation?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a device used for entertainment?
+Turn 16, User: Yes.
+Turn 17, Assistant: Is it a musical instrument?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a video game console?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a television?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: It's a computer monitor. Is it right?
+Turn 20, User: No.

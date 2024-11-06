@@ -1,0 +1,42 @@
+item: Traffic light
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the object a thing that can be carried?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is the object a tool or equipment?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is the tool or equipment used for a specific task or activity?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is the task or activity related to a profession or job?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the profession or job related to transportation or logistics?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is the transportation or logistics-related profession or job related to commercial trucking?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is the commercial trucking-related profession or job related to driving or operating a commercial truck?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is the entity a commercial truck?
+Turn 10, User: No.
+Turn 11, Assistant: Is the commercial truck a flatbed truck?
+Turn 11, User: No.
+Turn 12, Assistant: Is the commercial truck a refrigerated truck?
+Turn 12, User: No.
+Turn 13, Assistant: Is the commercial truck a tanker truck?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is the tanker truck used for transporting liquid cargo?
+Turn 14, User: No.
+Turn 15, Assistant: Is the tanker truck used for transporting a dry or solid cargo?
+Turn 15, User: No.
+Turn 16, Assistant: Is the tanker truck used for transporting a liquid other than oil or fuel?
+Turn 16, User: No.
+Turn 17, Assistant: Is the tanker truck used for transporting hazardous materials?
+Turn 17, User: No.
+Turn 18, Assistant: Is the tanker truck used for transporting food or beverages?
+Turn 18, User: No.
+Turn 19, Assistant: Is the tanker truck used for transporting chemicals or gases?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A firefighting truck carrying water or foam. Is it right?
+Turn 20, User: No.

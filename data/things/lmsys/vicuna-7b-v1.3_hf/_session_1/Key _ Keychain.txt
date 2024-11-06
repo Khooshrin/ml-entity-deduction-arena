@@ -1,0 +1,42 @@
+item: Key | Keychain
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object or a thing?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a material object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a natural object or made by humans?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Made by humans?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is the entity a tool or a device?
+Turn 6, User: Maybe.
+Turn 7, Assistant: A tool or device used for a specific purpose?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is the entity a weapon or a tool used for work?
+Turn 8, User: Maybe.
+Turn 9, Assistant: A weapon or a tool used for work?
+Turn 9, User: No.
+Turn 10, Assistant: Is the entity a musical instrument?
+Turn 10, User: No.
+Turn 11, Assistant: Is the entity a machine or a device used to perform a specific task?
+Turn 11, User: Maybe.
+Turn 12, Assistant: A machine or device used to perform a specific task?
+Turn 12, User: No.
+Turn 13, Assistant: Is the entity a piece of clothing or a fashion accessory?
+Turn 13, User: No.
+Turn 14, Assistant: Is the entity a type of transportation or a mode of locomotion?
+Turn 14, User: No.
+Turn 15, Assistant: Is the entity a musical instrument?
+Turn 15, User: No.
+Turn 16, Assistant: Is the entity a machine or device used for communication?
+Turn 16, User: No.
+Turn 17, Assistant: Is the entity a type of currency or monetary unit?
+Turn 17, User: No.
+Turn 18, Assistant: Is the entity a tool used for construction or building?
+Turn 18, User: No.
+Turn 19, Assistant: Is the entity a type of technology or scientific invention?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Based on your responses, I will guess that the entity is a piece of clothing or a fashion accessory. Is it right?
+Turn 20, User: No.

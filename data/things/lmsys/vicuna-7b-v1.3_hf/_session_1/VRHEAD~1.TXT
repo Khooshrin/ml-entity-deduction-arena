@@ -1,0 +1,42 @@
+item: VR headset | Virtual reality headset
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is this entity living?
+Turn 1, User: No.
+Turn 2, Assistant: Is this entity a person?
+Turn 2, User: No.
+Turn 3, Assistant: Is this entity an object or a thing?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is this entity a natural occurrence or a man-made object?
+Turn 4, User: No.
+Turn 5, Assistant: Is this entity a physical object?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is this entity a tool or a device?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is this entity a machine or a device?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is this entity a computer or a computer-related object?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is this entity a part of the internet or the world wide web?
+Turn 9, User: No.
+Turn 10, Assistant: Is this entity an element or a compound?
+Turn 10, User: No.
+Turn 11, Assistant: Is this entity a concept or a principle?
+Turn 11, User: No.
+Turn 12, Assistant: Is this entity a process or a method?
+Turn 12, User: No.
+Turn 13, Assistant: Is this entity a feeling or an emotion?
+Turn 13, User: No.
+Turn 14, Assistant: Is this entity a living creature or a being?
+Turn 14, User: No.
+Turn 15, Assistant: Is this entity a force or an energy?
+Turn 15, User: No.
+Turn 16, Assistant: Is this entity a country or a region?
+Turn 16, User: No.
+Turn 17, Assistant: Is this entity a type of weather or natural phenomenon?
+Turn 17, User: No.
+Turn 18, Assistant: Is this entity a type of object, such as a car or a book?
+Turn 18, User: Yes.
+Turn 19, Assistant: Is this entity a type of food or drink?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: It's a type of vehicle. Is it right?
+Turn 20, User: No.

@@ -1,0 +1,42 @@
+item: Yoga mat | Mat
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a physical object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a natural occurrence?
+Turn 3, User: No.
+Turn 4, Assistant: Is it an artificial creation?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a machine or device?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a construction or building?
+Turn 6, User: No.
+Turn 7, Assistant: Is it a vehicle or mode of transportation?
+Turn 7, User: No.
+Turn 8, Assistant: Is it an artwork or sculpture?
+Turn 8, User: No.
+Turn 9, Assistant: Is it an invention or discovery?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is it a discovery that occurred in the past?
+Turn 10, User: Yes.
+Turn 11, Assistant: Is it related to science or technology?
+Turn 11, User: No.
+Turn 12, Assistant: Is it related to history or culture?
+Turn 12, User: Maybe.
+Turn 13, Assistant: Is it related to philosophy or religion?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it related to politics or law?
+Turn 14, User: No.
+Turn 15, Assistant: Is it related to economics or finance?
+Turn 15, User: No.
+Turn 16, Assistant: Is it related to education or academics?
+Turn 16, User: No.
+Turn 17, Assistant: Is it related to sports or entertainment?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is it related to music or the performing arts?
+Turn 18, User: No.
+Turn 19, Assistant: Is it related to film or television?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is it a discovery related to space or outer space? Is it right?
+Turn 20, User: No.

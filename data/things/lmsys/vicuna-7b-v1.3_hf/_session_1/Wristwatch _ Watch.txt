@@ -1,0 +1,44 @@
+item: Wristwatch | Watch
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a natural occurrence or process?
+Turn 2, User: No.
+Turn 3, Assistant: Is it an object or an idea?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a physical object?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a human-made object?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a tool or a machine?
+Turn 6, User: Maybe.
+Turn 7, Assistant: Can you describe the function of the object?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is the object used for transportation?
+Turn 8, User: No.
+Turn 9, Assistant: Is the object used for communication or information?
+Turn 9, User: No.
+Turn 10, Assistant: Is the object used for entertainment or leisure?
+Turn 10, User: No.
+Turn 11, Assistant: Is the object used for food or drink?
+Turn 11, User: No.
+Turn 12, Assistant: Is the object used for work or job-related activities?
+Turn 12, User: Maybe.
+Turn 13, Assistant: Can you describe the type of work or job-related activities the object is used for?
+Turn 13, User: Yes.
+Turn 14, Assistant: Is the object used for maintenance or repair?
+Turn 14, User: No.
+Turn 15, Assistant: Is the object used for construction or building?
+Turn 15, User: No.
+Turn 16, Assistant: Is the object used for decoration or aesthetics?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Can you describe the type of decoration or aesthetics the object is used for?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Do you have any more questions or is there anything else I can ask you?
+Turn 18, User: No.
+Turn 19, Assistant: I will now try to deduce it based on your responses:
+
+Based on your answers, the object is used for communication or information, but not for entertainment or leisure. It is also used for work or job-related activities, but not for
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Based on your responses, I will guess that the object is a computer. Is it right?
+Turn 20, User: No.

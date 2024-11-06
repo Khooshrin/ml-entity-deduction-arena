@@ -1,0 +1,42 @@
+item: Jigsaw puzzle
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity living or non-living?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an animal or a plant?
+Turn 2, User: No.
+Turn 3, Assistant: Is the entity a human or an inanimate object?
+Turn 3, User: No.
+Turn 4, Assistant: Is the entity a real-life entity or a fictional one?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is the entity a person or a character from a book, movie, or TV show?
+Turn 5, User: No.
+Turn 6, Assistant: Is the entity a character from a video game?
+Turn 6, User: No.
+Turn 7, Assistant: Is the entity a historical figure?
+Turn 7, User: No.
+Turn 8, Assistant: Is the entity a fictional character from a book or movie?
+Turn 8, User: Maybe.
+Turn 9, Assistant: Is the entity a character from a book series?
+Turn 9, User: No.
+Turn 10, Assistant: Is the entity a character from a movie or TV series?
+Turn 10, User: Maybe.
+Turn 11, Assistant: Is the entity a character from a movie franchise?
+Turn 11, User: Maybe.
+Turn 12, Assistant: Is the entity a character from the Marvel Cinematic Universe (MCU)?
+Turn 12, User: No.
+Turn 13, Assistant: Is the entity a character from the Star Wars franchise?
+Turn 13, User: No.
+Turn 14, Assistant: Is the entity a character from the Harry Potter franchise?
+Turn 14, User: No.
+Turn 15, Assistant: Is the entity a character from the Lord of the Rings franchise?
+Turn 15, User: No.
+Turn 16, Assistant: Is the entity a character from the Fast & Furious franchise?
+Turn 16, User: No.
+Turn 17, Assistant: Is the entity a character from the James Bond franchise?
+Turn 17, User: No.
+Turn 18, Assistant: Is the entity a character from the DC Comics universe?
+Turn 18, User: No.
+Turn 19, Assistant: Is the entity a character from the Star Trek franchise?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is the entity a character from the X-Men franchise? Is it right?
+Turn 20, User: No.

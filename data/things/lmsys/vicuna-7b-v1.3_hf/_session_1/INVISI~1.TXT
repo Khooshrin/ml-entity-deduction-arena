@@ -1,0 +1,42 @@
+item: Invisibility cloak | Invisible cloak
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an inanimate object?
+Turn 2, User: Maybe.
+Turn 3, Assistant: Is it a natural occurrence?
+Turn 3, User: Maybe.
+Turn 4, Assistant: Is it a natural occurrence that can be found on land?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Is it a natural occurrence that can be found in the water?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a natural occurrence that can be found in the air?
+Turn 6, User: No.
+Turn 7, Assistant: Is it a natural occurrence that can be found on Earth?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Is it a natural occurrence that is a mineral or rock?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a natural occurrence that is a substance?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is it a natural occurrence that is a solid?
+Turn 10, User: Maybe.
+Turn 11, Assistant: Is it a natural occurrence that is a gas?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a natural occurrence that is a liquid?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a natural occurrence that is a compound?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it a natural occurrence that is a mixture?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a natural occurrence that is a solution?
+Turn 15, User: Maybe.
+Turn 16, Assistant: Is it a natural occurrence that is a homogeneous mixture?
+Turn 16, User: Maybe.
+Turn 17, Assistant: Is it a natural occurrence that is a heterogeneous mixture?
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is it a natural occurrence that is a suspension?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a natural occurrence that is a colloid?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: Water. Is it right?
+Turn 20, User: Maybe.

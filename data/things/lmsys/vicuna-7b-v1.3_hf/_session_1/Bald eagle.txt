@@ -1,0 +1,42 @@
+item: Bald eagle
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an animal?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a mammal?
+Turn 3, User: No.
+Turn 4, Assistant: Is it a bird?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a warm-blooded bird?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a predator or a prey?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a carnivorous bird?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is it a hawk or an eagle?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it a perched bird of prey?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it an owl?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a falcon?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a goshawk?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a merlin?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a saker falcon?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a red-tailed hawk?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a kestrel?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a peregrine falcon?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a prairie falcon?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a gyrfalcon?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is is a peregrine falcon? Is it right?
+Turn 20, User: No.

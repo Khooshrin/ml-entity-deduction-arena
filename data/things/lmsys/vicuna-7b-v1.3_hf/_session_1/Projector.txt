@@ -1,0 +1,42 @@
+item: Projector
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Can it be found in a natural habitat?
+Turn 2, User: No.
+Turn 3, Assistant: Can it exist in a built environment, such as a building or a museum?
+Turn 3, User: Yes.
+Turn 4, Assistant: Does it have a physical form?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a human-made object?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it an artwork?
+Turn 6, User: No.
+Turn 7, Assistant: Is it part of a collection?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Can it be found in a collection that is available to the public?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it part of a scientific collection?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Can it be found in a scientific collection that is available to the public?
+Turn 10, User: Maybe.
+Turn 11, Assistant: Is it a plant?
+Turn 11, User: No.
+Turn 12, Assistant: Is it an animal?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a mineral?
+Turn 13, User: No.
+Turn 14, Assistant: Can it be found in a natural habitat?
+Turn 14, User: No.
+Turn 15, Assistant: Is it an artificial structure or object?
+Turn 15, User: Yes.
+Turn 16, Assistant: Is it a sculpture?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a machine or a device?
+Turn 17, User: Yes.
+Turn 18, Assistant: Is it an antique?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Can it be found in a museum or a private collection?
+Turn 19, User: Maybe. You must guess now, what's it?
+Turn 20, Assistant: It is a computer or electronic device. Is it right?
+Turn 20, User: Yes.
