@@ -1,0 +1,42 @@
+item: Backpack
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an object or thing?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is the entity a natural occurrence or phenomenon?
+Turn 3, User: No.
+Turn 4, Assistant: Does the entity have a physical presence?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is the entity a type of living thing?
+Turn 5, User: No.
+Turn 6, Assistant: Is the entity a type of object or thing?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the entity a natural occurrence or phenomenon?
+Turn 7, User: No.
+Turn 8, Assistant: Is the entity a physical entity?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is the entity a type of animal?
+Turn 9, User: No.
+Turn 10, Assistant: Is the entity a type of plant?
+Turn 10, User: No.
+Turn 11, Assistant: Is the entity a type of mineral?
+Turn 11, User: No.
+Turn 12, Assistant: Is the entity a type of man-made object or structure?
+Turn 12, User: Yes.
+Turn 13, Assistant: Can you provide a more specific category for the entity?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is the entity a type of building or structure?
+Turn 14, User: No.
+Turn 15, Assistant: Is the entity a type of machinery or equipment?
+Turn 15, User: No.
+Turn 16, Assistant: Is the entity a type of vehicle or mode of transportation?
+Turn 16, User: No.
+Turn 17, Assistant: I'm sorry, I'm not able to deduce it. It seems I was not able to narrow it down to a specific category.
+Turn 17, User: Maybe.
+Turn 18, Assistant: Is the entity a type of device or tool?
+Turn 18, User: Yes.
+Turn 19, Assistant: Is the entity a type of communication device, such as a phone, radio, or television?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is the entity a type of computer or computing device? Is it right?
+Turn 20, User: Maybe.

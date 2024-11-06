@@ -1,0 +1,42 @@
+item: Wristwatch | Watch
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity alive?
+Turn 1, User: No.
+Turn 2, Assistant: Is the entity an animal?
+Turn 2, User: No.
+Turn 3, Assistant: Is the entity a plant?
+Turn 3, User: No.
+Turn 4, Assistant: Is the entity a natural occurrence?
+Turn 4, User: No.
+Turn 5, Assistant: Does the entity have a physical form?
+Turn 5, User: Yes.
+Turn 6, Assistant: Does the entity have a physical shape?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is the entity a human?
+Turn 7, User: No.
+Turn 8, Assistant: Is the entity a machine or object?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is the entity a vehicle?
+Turn 9, User: No.
+Turn 10, Assistant: Is the entity a tool or instrument?
+Turn 10, User: Yes.
+Turn 11, Assistant: Is the entity a musical instrument?
+Turn 11, User: No.
+Turn 12, Assistant: Is the entity a scientific or mechanical instrument?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is the entity a measurement tool?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Does the entity measure length, width, or height?
+Turn 14, User: No.
+Turn 15, Assistant: Does the entity measure time, temperature, or other physical properties?
+Turn 15, User: Yes.
+Turn 16, Assistant: Is the entity a thermometer?
+Turn 16, User: No.
+Turn 17, Assistant: Is the entity a barometer?
+Turn 17, User: No.
+Turn 18, Assistant: Is the entity a seismograph or other instrument for measuring earthquakes?
+Turn 18, User: No.
+Turn 19, Assistant: Is the entity a telescope?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: A ruler? Is it right?
+Turn 20, User: No.

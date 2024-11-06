@@ -1,0 +1,42 @@
+item: Husky
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: Yes.
+Turn 2, Assistant: Is it an animal?
+Turn 2, User: Yes.
+Turn 3, Assistant: Does it have a backbone?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a mammal?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a primate?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a bird?
+Turn 6, User: No.
+Turn 7, Assistant: Is it an amphibian?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a reptile?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a fish?
+Turn 9, User: No.
+Turn 10, Assistant: Is it an insect?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a crustacean?
+Turn 11, User: No.
+Turn 12, Assistant: Is it an arachnid?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a nematode?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a flatworm?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a roundworm?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a tardigrade?
+Turn 16, User: No.
+Turn 17, Assistant: Is it an annelid?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a arthropod?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a mollusk?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Based on the clues provided, the entity I am thinking of is not a mammal, primate, bird, amphibian, reptile, fish, crustacean, arachnid, flatworm, roundworm, tardigrade, annelid, arthrop Is it right?
+Turn 20, User: No.

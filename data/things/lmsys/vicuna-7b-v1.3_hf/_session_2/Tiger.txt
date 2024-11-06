@@ -1,0 +1,20 @@
+item: Tiger
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an animal?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a mammal?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a domestic animal?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a zoo animal?
+Turn 5, User: Maybe.
+Turn 6, Assistant: Is it a carnivore?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a dog?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a cat?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it a tiger?
+Turn 9, User: Bingo!

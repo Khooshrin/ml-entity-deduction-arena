@@ -1,0 +1,42 @@
+item: Invisibility cloak | Invisible cloak
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an animal?
+Turn 2, User: No.
+Turn 3, Assistant: Is it an object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a living object?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a non-living object?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it inanimate?
+Turn 6, User: Maybe.
+Turn 7, Assistant: Is it an abstract concept?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Is it a natural phenomenon?
+Turn 8, User: Maybe.
+Turn 9, Assistant: Is it a man-made object?
+Turn 9, User: Maybe.
+Turn 10, Assistant: Is it a machine?
+Turn 10, User: Maybe.
+Turn 11, Assistant: Is it a device?
+Turn 11, User: Maybe.
+Turn 12, Assistant: Is it a tool?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is it a software tool?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a hardware tool?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a power tool?
+Turn 15, User: Maybe.
+Turn 16, Assistant: Is it a hand tool?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a measurement tool?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a production tool?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it a construction tool?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Is it a testing tool? Is it right?
+Turn 20, User: No.

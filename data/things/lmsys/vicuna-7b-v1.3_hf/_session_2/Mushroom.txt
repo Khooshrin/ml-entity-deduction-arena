@@ -1,0 +1,42 @@
+item: Mushroom
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it an object?
+Turn 1, User: Maybe.
+Turn 2, Assistant: Is it a living thing?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it an animal?
+Turn 3, User: No.
+Turn 4, Assistant: Is it a plant?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a natural phenomenon?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a physical phenomenon?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a geological phenomenon?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a meteorological phenomenon?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a chemical phenomenon?
+Turn 9, User: No.
+Turn 10, Assistant: Is it a biological phenomenon?
+Turn 10, User: Yes.
+Turn 11, Assistant: Is it a biological process?
+Turn 11, User: Yes.
+Turn 12, Assistant: Is it a growth process?
+Turn 12, User: Yes.
+Turn 13, Assistant: Is it a reproduction process?
+Turn 13, User: Maybe.
+Turn 14, Assistant: Is it sexual reproduction?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it asexual reproduction?
+Turn 15, User: Maybe.
+Turn 16, Assistant: Is it cell division?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a metabolic process?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a nutrient process?
+Turn 18, User: Maybe.
+Turn 19, Assistant: Is it cellular respiration?
+Turn 19, User: Yes. You must guess now, what's it?
+Turn 20, Assistant: It is cellular respiration. Is it right?
+Turn 20, User: Yes.

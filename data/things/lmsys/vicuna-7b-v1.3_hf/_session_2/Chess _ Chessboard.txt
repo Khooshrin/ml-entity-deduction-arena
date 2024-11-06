@@ -1,0 +1,42 @@
+item: Chess | Chessboard
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it a physical object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a natural occurrence?
+Turn 3, User: No.
+Turn 4, Assistant: Is it man-made?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a tool or equipment?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a vehicle?
+Turn 6, User: No.
+Turn 7, Assistant: Is it a machine?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a device or instrument?
+Turn 8, User: No.
+Turn 9, Assistant: Is it an object that has a specific purpose or function?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a computer or other electronic device?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a tool or a piece of equipment used in construction?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a device or instrument used in scientific research or experimentation?
+Turn 12, User: No.
+Turn 13, Assistant: Is it an object used for daily living or household purposes?
+Turn 13, User: No.
+Turn 14, Assistant: Is it an object that can be found in a public place?
+Turn 14, User: Maybe.
+Turn 15, Assistant: Is it a piece of furniture or a decorative item?
+Turn 15, User: No.
+Turn 16, Assistant: Is it an object that can be found in a building or structure?
+Turn 16, User: Yes.
+Turn 17, Assistant: Is it an object that can be found in a school or office building?
+Turn 17, User: Yes.
+Turn 18, Assistant: Is it an object that can be found in a home or residential building?
+Turn 18, User: Yes.
+Turn 19, Assistant: Is it an object that can be found in a library or archive?
+Turn 19, User: Yes. You must guess now, what's it?
+Turn 20, Assistant: Is it a book? Is it right?
+Turn 20, User: No.

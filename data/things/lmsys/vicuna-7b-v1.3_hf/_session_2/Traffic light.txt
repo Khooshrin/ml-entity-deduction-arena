@@ -1,0 +1,42 @@
+item: Traffic light
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a living thing?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an object?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it a movable object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a human-made object?
+Turn 4, User: Yes.
+Turn 5, Assistant: Is it a vehicle?
+Turn 5, User: No.
+Turn 6, Assistant: Is it a tool or equipment?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a power tool?
+Turn 7, User: No.
+Turn 8, Assistant: Is it a hand tool?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a type of machine or device?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a machine used for a specific purpose?
+Turn 10, User: Yes.
+Turn 11, Assistant: Is it a printer?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a typewriter?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a scanner?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a copier?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a fax machine?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a digital camera?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a film camera?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a camcorder?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a telephoto lens?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: It is a flash. Is it right?
+Turn 20, User: No.

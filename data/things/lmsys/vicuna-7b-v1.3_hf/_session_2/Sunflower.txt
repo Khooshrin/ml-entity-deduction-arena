@@ -1,0 +1,42 @@
+item: Sunflower
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is the entity animate or inanimate?
+Turn 1, User: Yes.
+Turn 2, Assistant: Does it have a physical presence in the real world?
+Turn 2, User: Yes.
+Turn 3, Assistant: Is it an object or a concept?
+Turn 3, User: Maybe.
+Turn 4, Assistant: Can it be both an object and a concept at the same time?
+Turn 4, User: Maybe.
+Turn 5, Assistant: Does it have multiple definitions or meanings depending on context?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it commonly used in everyday life?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it something that can be perceived through the five senses?
+Turn 7, User: Yes.
+Turn 8, Assistant: Is it a living thing?
+Turn 8, User: Yes.
+Turn 9, Assistant: Is it a plant or an animal?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a mammal?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a bird?
+Turn 11, User: No.
+Turn 12, Assistant: Is it an amphibian or a reptile?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a fish or a crustacean?
+Turn 13, User: No.
+Turn 14, Assistant: Is it an insect or a arachnid?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a mollusk or any other type of aquatic invertebrates?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a plant that is not a tree, bush, or grass?
+Turn 16, User: Yes.
+Turn 17, Assistant: Is it a flowering plant or a non-flowering plant?
+Turn 17, User: Yes.
+Turn 18, Assistant: Is it a fern or a moss?
+Turn 18, User: No.
+Turn 19, Assistant: Does it have a specific type of stem?
+Turn 19, User: Yes. You must guess now, what's it?
+Turn 20, Assistant: Could it be a stem with leaves? Is it right?
+Turn 20, User: Yes.

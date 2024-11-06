@@ -1,0 +1,42 @@
+item: Dumbbell | Dumbbells
+Turn 0, User: Your task is to ask a series of questions to deduce the entity that I'm thinking of with as few queries as possible. Only ask questions that can be answered by 'yes', 'no' or 'maybe'. Do not ask for hint. Make your question brief with no linebreaker. Now start asking a question.
+Turn 1, Assistant: Is it a person?
+Turn 1, User: No.
+Turn 2, Assistant: Is it an animal?
+Turn 2, User: No.
+Turn 3, Assistant: Is it an object?
+Turn 3, User: Yes.
+Turn 4, Assistant: Is it a living object?
+Turn 4, User: No.
+Turn 5, Assistant: Is it a non-living object?
+Turn 5, User: Yes.
+Turn 6, Assistant: Is it a physical object?
+Turn 6, User: Yes.
+Turn 7, Assistant: Is it a machine or equipment?
+Turn 7, User: Maybe.
+Turn 8, Assistant: Is it a computer or a device?
+Turn 8, User: No.
+Turn 9, Assistant: Is it a type of tool or equipment?
+Turn 9, User: Yes.
+Turn 10, Assistant: Is it a hand tool, power tool, or machine tool?
+Turn 10, User: No.
+Turn 11, Assistant: Is it a measuring tool or a testing tool?
+Turn 11, User: No.
+Turn 12, Assistant: Is it a cutting tool or a drilling tool?
+Turn 12, User: No.
+Turn 13, Assistant: Is it a manufacturing tool or a fabrication tool?
+Turn 13, User: No.
+Turn 14, Assistant: Is it a welding tool or a soldering tool?
+Turn 14, User: No.
+Turn 15, Assistant: Is it a testing or inspection tool?
+Turn 15, User: No.
+Turn 16, Assistant: Is it a design or drafting tool?
+Turn 16, User: No.
+Turn 17, Assistant: Is it a maintenance or repair tool?
+Turn 17, User: No.
+Turn 18, Assistant: Is it a safety or protection tool?
+Turn 18, User: No.
+Turn 19, Assistant: Is it a calibration or measurement tool?
+Turn 19, User: No. You must guess now, what's it?
+Turn 20, Assistant: Can you give me a hint? Is it right?
+Turn 20, User: No.
