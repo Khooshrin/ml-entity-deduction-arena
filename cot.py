@@ -179,6 +179,7 @@ class COT:
             self.top_n = 10
         self.num_turns = num_turns
         self.inference_count = 0
+        self.recent_top_n = []
         
     def guess(self, messages):
         tree = self.generate_tree(messages)
@@ -219,7 +220,27 @@ class COT:
 
     def choose_branch(self, tree):
         # TODO: Given a tree of guesser and answerer nodes, choose one child of the root node and return a response
-        pass
+        def count_unique_candidates(node):
+            """Helper function to count unique candidates in the subtree rooted at `node`."""
+            queue = [node]
+            unique_candidates = set()
+            while queue:
+                current_node = queue.pop(0)
+                if isinstance(current_node, AnswererNode):
+                    unique_candidates.update(current_node.top_n)
+                queue.extend(current_node.children)
+            return len(unique_candidates)
+        
+        best_branch = None
+        min_candidate_count = float('inf')
+        
+        for child in tree.children:
+            candidate_count = count_unique_candidates(child)
+            if candidate_count < min_candidate_count:
+                min_candidate_count = candidate_count
+                best_branch = child
+
+        return best_branch.messages[-1]["content"] if best_branch else "Unable to determine a confident next question."
 
     def create_guesser(self, openai_api, guesser_model, guesser_tokenizer, guesser_api_base, guesser_kargs, temperature, vicuna_prompt, anthropic_api):
         if isinstance(self.guesser_model, str) and self.guesser_model.startswith(
@@ -237,12 +258,73 @@ class COT:
     def generate_guess(self, messages, node):
         # TODO: Given a set of messages and a parent node generate a guess. Make sure to decide whether to guess an entity or ask a question in this function 
         # based on the previous top-n candidates of the ancestor answerer nodes and whether this is the last guess or not
-        pass
+        if self.recent_top_n:
+            for candidate in node.top_n:
+                if all(candidate in recent_top for recent_top in self.recent_top_n[-5:]):
+                    guess_content = f"Is it a/an {candidate}?"
+                    self.inference_count += 1
+                    return {"role": "assistant", "content": guess_content}
+        
+        next_question = self.guess(messages)
+        return {"role": "assistant", "content": next_question}
 
     def generate_answer(self, response):
         # TODO: Given a Yes/No/Maybe response, return a formatted answer
-        pass
+        return response
 
     def generate_top_n(self, messages):
         # TODO: Given a set of messages, generate the top n best candidates for the entity
-        pass
+        unique_candidates = set()  # Use a set to keep only unique entities
+
+        # Determine which model is being used and query it for top entities
+        if isinstance(self.guesser_model, ClaudeGuesser):
+            # Claude model execution
+            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
+            try:
+                completion = self.guesser_model.anthropic_api.completions.create(
+                    model=self.guesser_model.model,
+                    prompt=prompt,
+                    max_tokens_to_sample=64,
+                    temperature=self.guesser_model.temperature,
+                )
+                # Split lines and add unique entries to the set
+                unique_candidates.update(completion.completion.splitlines())
+            except Exception as e:
+                print(f"Claude API error: {e}")
+
+        elif isinstance(self.guesser_model, OpenAIGuesser):
+            # OpenAI model execution
+            openai.api_base = self.guesser_model.api_base
+            try:
+                prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
+                response = openai.ChatCompletion.create(
+                    model=self.guesser_model.model,
+                    messages=messages + [{"role": "system", "content": prompt}],
+                    max_tokens=self.guesser_model.max_tokens,
+                    temperature=self.guesser_model.temperature,
+                )
+                openai_candidates = response.choices[0].message["content"].strip().splitlines()
+                unique_candidates.update(openai_candidates)
+            except Exception as e:
+                print(f"OpenAI API error: {e}")
+
+        elif isinstance(self.guesser_model, HuggingFaceGuesser):
+            # Hugging Face model execution
+            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
+            input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.device)
+
+            try:
+                with torch.no_grad():
+                    gen = self.guesser_model.model.generate(input_ids=input_ids, max_length=64, **self.guesser_model.kargs)
+                    huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True).splitlines()
+                    unique_candidates.update(huggingface_candidates)
+            except Exception as e:
+                print(f"Hugging Face API error: {e}")
+
+        # Convert unique set to a sorted list and limit to top_n
+        top_n = list(unique_candidates)[:self.top_n]
+        self.recent_top_n.append(top_n)
+        if len(self.recent_top_n) > 5:
+            self.recent_top_n.pop(0)
+
+        return top_n
