@@ -150,7 +150,8 @@ class COT:
     def __init__(
         self,
         item: str,
-        guesser_model: str,
+        guesser_model,
+        guesser_model_name: str,
         num_turns: int,
         temperature: float,
         openai_api: bool,
@@ -162,7 +163,7 @@ class COT:
         cot_kargs={},
     ) -> None:
         self.item = item
-        self.guesser_model = self.create_guesser(openai_api, guesser_model, guesser_tokenizer, guesser_api_base, guesser_kargs, temperature, vicuna_prompt, anthropic_api)
+        self.guesser_model = self.create_guesser(openai_api, guesser_model_name, guesser_model, guesser_tokenizer, guesser_api_base, guesser_kargs, temperature, vicuna_prompt, anthropic_api)
         if "depth" in cot_kargs:
             self.depth = cot_kargs["depth"]
         else:
@@ -211,7 +212,7 @@ class COT:
                 else:
                     for item in ["Yes", "No", "Maybe"]:
                         answer = self.generate_answer(item)
-                        child = AnswererNode(messages = messages + [answer], top_n=self.generate_top_n(messages + [answer], self.top_n), parent=node)
+                        child = AnswererNode(messages = messages + [answer], top_n=self.generate_top_n(messages + [answer]), parent=node)
                         child_list.append(child)
                 node.add_children(child_list)
 
@@ -242,18 +243,16 @@ class COT:
 
         return best_branch.messages[-1]["content"] if best_branch else "Unable to determine a confident next question."
 
-    def create_guesser(self, openai_api, guesser_model, guesser_tokenizer, guesser_api_base, guesser_kargs, temperature, vicuna_prompt, anthropic_api):
-        if isinstance(self.guesser_model, str) and self.guesser_model.startswith(
+    def create_guesser(self, openai_api, guesser_model_name, guesser_model, guesser_tokenizer, guesser_api_base, guesser_kargs, temperature, vicuna_prompt, anthropic_api):
+        if guesser_model_name.startswith(
             "claude"
         ):
             return ClaudeGuesser(guesser_model, anthropic_api=anthropic_api, temperature=temperature)
-        if not isinstance(self.guesser_model, str):
+        elif openai_api:
+            return OpenAIGuesser(api_base=guesser_api_base, model=guesser_model, temperature=temperature)
+        else:
             return HuggingFaceGuesser(vicuna_prompt, guesser_tokenizer, guesser_model, guesser_kargs)
         
-        if openai_api:
-            return OpenAIGuesser(api_base=guesser_api_base, model=guesser_model, temperature=temperature)
-        
-        raise Exception()
 
     def generate_guess(self, messages, node):
         # TODO: Given a set of messages and a parent node generate a guess. Make sure to decide whether to guess an entity or ask a question in this function 
@@ -265,12 +264,38 @@ class COT:
                     self.inference_count += 1
                     return {"role": "assistant", "content": guess_content}
         
-        next_question = self.guess(messages)
-        return {"role": "assistant", "content": next_question}
+        prompt = "Based on the conversation so far, generate the top 10 questions that can help deduce the entity. Only ask questions that can be answered with 'yes', 'no', or 'maybe'."
+        potential_questions = self.guesser_model.make_guess([{"role": "system", "content": prompt}] + messages).splitlines()
+    
+        # Ensure unique questions
+        potential_questions = list(set(potential_questions))[:10]  # Limit to 10 unique questions
+
+        # Simulate answers for each question and evaluate their effectiveness
+        best_question = None
+        max_reduction = -1
+
+        for question in potential_questions:
+            reduction_score = 0  # Track subspace reduction for this question
+
+            # For each possible answer, simulate how it would impact subspace reduction
+            for answer in ["Yes", "No", "Maybe"]:
+                simulated_messages = messages + [{"role": "assistant", "content": question}, {"role": "user", "content": answer}]
+                top_n_candidates = self.generate_top_n(simulated_messages)
+
+                # Calculate a reduction score based on the uniqueness of the remaining candidates
+                reduction_score += len(set(top_n_candidates))
+
+            # If this question has the highest reduction score, select it as the best
+            if reduction_score > max_reduction:
+                max_reduction = reduction_score
+                best_question = question
+
+        # Return the selected question as the next question to ask
+        return {"role": "assistant", "content": best_question or "Unable to determine the next best question."}
 
     def generate_answer(self, response):
         # TODO: Given a Yes/No/Maybe response, return a formatted answer
-        return response
+        return {"role": "assistant", "content": response}
 
     def generate_top_n(self, messages):
         # TODO: Given a set of messages, generate the top n best candidates for the entity
@@ -279,7 +304,7 @@ class COT:
         # Determine which model is being used and query it for top entities
         if isinstance(self.guesser_model, ClaudeGuesser):
             # Claude model execution
-            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
+            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities."
             try:
                 completion = self.guesser_model.anthropic_api.completions.create(
                     model=self.guesser_model.model,
@@ -296,7 +321,7 @@ class COT:
             # OpenAI model execution
             openai.api_base = self.guesser_model.api_base
             try:
-                prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
+                prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities."
                 response = openai.ChatCompletion.create(
                     model=self.guesser_model.model,
                     messages=messages + [{"role": "system", "content": prompt}],
@@ -310,8 +335,8 @@ class COT:
 
         elif isinstance(self.guesser_model, HuggingFaceGuesser):
             # Hugging Face model execution
-            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + self.top_n + " entities."
-            input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.device)
+            prompt = self.guesser_model.dialog_history(messages) + "Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities."
+            input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.base_model.device)
 
             try:
                 with torch.no_grad():

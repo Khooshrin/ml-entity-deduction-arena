@@ -22,10 +22,13 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
     else:
         guesser_model = args.guesser_model
         guesser_kargs = {}
+#    print(type(guesser_model))
+#    print(guesser_model)
     game = Q20Game(
         item=item,
         answerer_model=args.answerer_model,
         guesser_model=guesser_model,
+        guesser_model_name=args.guesser_model,
         guesser_tokenizer=guesser_tokenizer,
         num_turns=args.turns,
         temperature=args.temp,
@@ -42,6 +45,7 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
             f"_session_{s}" if args.num_sessions > 1 else "",
         )
         if not os.path.exists(os.path.join(file_name, f"{item}.txt")):
+            print("running as it does not exists")
             game.game_play(user_mode=args.user)
             game.save_session(path=file_name)
         else:
