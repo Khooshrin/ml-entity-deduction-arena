@@ -22,8 +22,6 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
     else:
         guesser_model = args.guesser_model
         guesser_kargs = {}
-#    print(type(guesser_model))
-#    print(guesser_model)
     game = Q20Game(
         item=item,
         answerer_model=args.answerer_model,

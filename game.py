@@ -38,8 +38,6 @@ class Q20Game:
     ) -> None:
         self.item = item
         self.answerer_model = answerer_model
-#        print(type(guesser_model))
-#        print(guesser_model)
         self.guesser_model = guesser_model
         self.num_turns = num_turns
         self.temperature = temperature
@@ -68,8 +66,6 @@ class Q20Game:
             self.guesser_api_base = "http://0.0.0.0:8000/v1"
         else:
             self.guesser_api_base = "https://api.openai.com/v1"
-#        print(type(guesser_model))
-#        print(guesser_model)
         self.anthropic_api = Anthropic()
 
         self.guesser_messages = []
@@ -89,7 +85,6 @@ class Q20Game:
                 self.anthropic_api,
                 cot_kargs
             )
-        print(self.cot)
 
     def confusion_matrix(self, path):
         self.reset()
@@ -140,13 +135,8 @@ class Q20Game:
         logger=LOGGER,
     )
     def guesser(self, messages):
-        print(self.cot)
         if self.cot:
-            print("In COT Guesser")
-            return {
-                "role": "assistant",
-                "content": self.cot.guess(messages)
-            }
+            return self.cot.guess(messages)
 
         if isinstance(self.guesser_model, str) and self.guesser_model.startswith(
             "claude"
@@ -227,19 +217,15 @@ class Q20Game:
 
     def game_play(self, user_mode=False):
         self.reset()
-        # print(f"Item: {self.item}")
         for t in range(self.num_turns):
-            print(user_mode)
             # System asking a question
             if (not user_mode) or user_mode is None:
-                print("here1")
                 guesser_msg = self.guesser(self.guesser_messages)
                 guesser_msg["content"] = re.sub(r'the entity you are thinking of', 'it', guesser_msg["content"])
                 guesser_msg["content"] = re.sub(r"the entity you're thinking of", 'it', guesser_msg["content"])
                 guesser_msg["content"] = re.sub(r" you're thinking of", '', guesser_msg["content"])
                 guesser_msg["content"] = re.sub(r" you are thinking of", '', guesser_msg["content"])
             else:
-                print("here2")
                 user_q = input(
                     f"Type in your questions for turn {t+1}. (e.g. Is it a living thing?)\n"
                 )
