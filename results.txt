@@ -1,0 +1,13 @@
+CoT Implemented:
+  - Average of All Sessions:
+    -Average Turns: 19.126666666666665
+    -Success Rate (%): 15.333333333333332
+    -Average #Yes Responses: 4.873333333333333
+    -Average Score: 0.12226666666666666
+
+Baseline:
+  - Average of All Sessions:
+    -Average Turns: 19.35333333333333
+    -Success Rate (%): 11.333333333333332
+    -Average #Yes Responses: 4.8933333333333335
+    -Average Score: 0.09226666666666666
