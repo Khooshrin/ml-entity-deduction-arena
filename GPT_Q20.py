@@ -32,6 +32,7 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
         temperature=args.temp,
         openai_api=args.openai_api,
         guesser_kargs=guesser_kargs,
+        cot=True
     )
 
     for s in tqdm.tqdm(
