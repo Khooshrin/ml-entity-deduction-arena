@@ -118,12 +118,17 @@ class HuggingFaceGuesser(GuesserModel):
 
 
             return gen_str
-    def answer_prompt(self, prompt, max_tokens):
+    def answer_prompt(self, prompt, max_tokens = None):
         input_ids = torch.tensor(
             [self.tokenizer.encode(prompt, add_special_tokens=True)]
         )  # TODO check if huggingface is using the same format.
         input_ids = input_ids.to(self.model.base_model.device)
         attention_mask = None
+
+        kargs_copy = self.kargs.copy()
+        
+        if max_tokens:
+            kargs_copy["max_new_tokens"] = max_tokens
 
         with torch.no_grad():
             gen = self.model.generate(
@@ -247,7 +252,7 @@ class COT:
                     print("GUESSES: ", (i, j), " ", guesses)
                     for guess in guesses:
                         child = GuesserNode(messages=messages + [guess], parent=node)
-                        self.add_reduction_score(child, node)
+                        # self.add_reduction_score(child, node)
                         queue.append(child)
                         child_list.append(child)
                 elif i != self.depth - 1:
@@ -276,18 +281,31 @@ class COT:
                 queue.extend(current_node.children)
             return len(unique_candidates)
         
-        best_branch = None
-        max_score = float('-inf')
+        # best_branch = None
+        # max_score = float('-inf')
+        
+        # for child in tree.children:
+        #     probs = self.calculate_probs(child)
+        #     if len(probs) == 0:
+        #         continue
+        #     score = entropy(self.calculate_probs(child))
+        #     print(child, score)
+        #     if score > max_score:
+        #         max_score = score
+        #         best_branch = child
+
+        potential_questions = []
         
         for child in tree.children:
-            probs = self.calculate_probs(child)
-            if len(probs) == 0:
-                continue
-            score = entropy(self.calculate_probs(child))
-            print(child, score)
-            if score > max_score:
-                max_score = score
+            potential_questions.append(child.messages[-1]["content"])
+        
+        best_question = self.choose_question_based_on_reduction(potential_questions, tree.messages)
+
+        best_branch = None
+        for child in tree.children:
+            if child.messages[-1]["content"] == best_question:
                 best_branch = child
+                break
 
         return best_branch.messages[-1]["content"] if best_branch else "Unable to determine a confident next question."
 
@@ -312,8 +330,45 @@ class COT:
                     self.inference_count += 1
                     return [{"role": "assistant", "content": guess_content}]
         
-        prompt = "Based on the conversation so far, generate the top 10 questions that can help deduce the entity with each question on a new line. Do not number the questions and only ask questions that can be answered with 'yes', 'no', or 'maybe'."
-        potential_questions = self.guesser_model.make_guess(messages + [{"role": "USER", "content": prompt}])
+        def generate_20_questions_prompt(candidates):
+            """
+            Generates a prompt for a 20 Questions game using a list of candidates.
+
+            Parameters:
+                candidates (list): A list of candidate names or entities.
+
+            Returns:
+                str: The formatted prompt for the game.
+            """
+            prompt = f"""
+            Q: We are playing the game of 20 Questions. Below is a list of candidates that could be the hidden entity. 
+            Your task is to generate **yes/no/maybe** questions that help narrow down the possibilities and identify 
+            the hidden entity efficiently.
+
+            **Candidates:**
+            {', '.join(candidates)}
+
+            **Task:**
+            Based on the list of candidates, generate a series of strategic **yes/no/maybe** questions. These questions should:
+            1. Help eliminate multiple candidates with each question.
+            2. Be specific enough to differentiate among the candidates.
+
+            For example:
+            - "Is the entity known for [specific trait or role]?"
+            - "Does the entity have [specific characteristic]?"
+            - "Is the entity associated with [specific context or activity]?"
+
+            Generate **10** to guide the game. Ensure the questions are relevant and progressively help narrow down the hidden entity. 
+
+            A: 
+
+            1.
+            """
+            return prompt
+    
+        prompt = generate_20_questions_prompt(node.top_n)
+        potential_questions = self.guesser_model.answer_prompt(prompt, 1000)
+        potential_questions = potential_questions.split("A:")[1].strip()
 
         # Get a list of unique questions from potential questions. Questions look like this: 1. Is it a person?
         potential_questions = re.findall(r'(?:\d+\.\s*)?(.*?\?)', potential_questions)
@@ -321,29 +376,30 @@ class COT:
         print(potential_questions)
         # Ensure unique questions
         potential_questions = list(set(potential_questions))[:k]  # Limit to 10 unique questions
-
-        # # Simulate answers for each question and evaluate their effectiveness
-        # best_question = None
-        # max_reduction = -1
-
-        # for question in potential_questions:
-        #     reduction_score = 0  # Track subspace reduction for this question
-
-        #     # For each possible answer, simulate how it would impact subspace reduction
-        #     for answer in ["Yes", "No", "Maybe"]:
-        #         simulated_messages = messages + [{"role": "assistant", "content": question}, {"role": "user", "content": answer}]
-        #         top_n_candidates = self.generate_top_n(simulated_messages)
-
-        #         # Calculate a reduction score based on the uniqueness of the remaining candidates
-        #         reduction_score += len(set(top_n_candidates))
-
-        #     # If this question has the highest reduction score, select it as the best
-        #     if reduction_score > max_reduction:
-        #         max_reduction = reduction_score
-        #         best_question = question
-
-        # Return the selected question as the next question to ask
         return [{"role": "assistant", "content": question or "Unable to determine the next best question."} for question in potential_questions]
+    
+    def choose_question_based_on_reduction(self, potential_questions, messages):
+        best_question = None
+        max_reduction = -1
+
+        for question in potential_questions:
+            reduction_score = 0  # Track subspace reduction for this question
+
+            # For each possible answer, simulate how it would impact subspace reduction
+            for answer in ["Yes", "No", "Maybe"]:
+                simulated_messages = messages + [{"role": "assistant", "content": question}, {"role": "user", "content": answer}]
+                top_n_candidates = self.generate_top_n(simulated_messages)
+
+                # Calculate a reduction score based on the uniqueness of the remaining candidates
+                reduction_score += len(set(top_n_candidates))
+
+            # If this question has the highest reduction score, select it as the best
+            if reduction_score > max_reduction:
+                max_reduction = reduction_score
+                best_question = question
+        
+        return best_question
+
     
     def add_reduction_score(self, guess_node: GuesserNode, answerer_node: AnswererNode, base = None):
         top_n = answerer_node.top_n
