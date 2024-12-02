@@ -12,6 +12,8 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 LOGGER = logging.getLogger(__name__)
 
 def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
+#def run_chat(input_file_path, answerer_model, guesser_model, suffix, turns, temp, num_sessions, openai_api, item, guesser_tokenizer=None):
+    # Function implementation
     if not args.openai_api:
         guesser_kargs = {
             "max_new_tokens": 64,

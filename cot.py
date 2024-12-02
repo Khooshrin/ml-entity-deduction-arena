@@ -406,23 +406,32 @@ class COT:
 
         elif isinstance(self.guesser_model, HuggingFaceGuesser):
             # Hugging Face model execution
-            #prompt = "Message History: " + self.guesser_model.dialog_history(messages) + " \n Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities."
-            prompt = "Message History: " + self.guesser_model.dialog_history(messages) +  "Q: Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities. \n A: "
+#            prompt = "Message History: " + self.guesser_model.dialog_history(messages) + " \n Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities with every entity on a separate line."
+            prompt = "Message History: " + self.guesser_model.dialog_history(messages) +  "Q: Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities. Give your response starting with A: and then a comma separated list of the entities.\n"
             input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.base_model.device)
 
             try:
                 with torch.no_grad():
                     gen = self.guesser_model.model.generate(input_ids=input_ids, max_length=2000, temperature=0.8, repetition_penalty=1.0, do_sample=True)
-                    for i in range(0, len(gen)):
-                        huggingface_candidates = self.guesser_model.tokenizer.decode(gen[i], skip_special_tokens=True)
-                    
+#                    print(f"Shape of gen: {gen.size()}")
+#                    for i in range(0, len(gen)):
+                    huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True)
+                    print("CD:")
+                    print(huggingface_candidates)
+                    #print(f"Shape of candidates: {huggingface_candidates.size()}")
                     # Get the part of the response after the prompt
-                    huggingface_candidates = huggingface_candidates.split("A: ")[1]
+#                    huggingface_candidates = huggingface_candidates.split("A: ")[1]
                     # Split lines and add unique entries to the set while removing numbers, special characters, and leading/trailing whitespace
-                    huggingface_candidates = [re.sub(r"[^a-zA-Z ]", "", candidate).strip() for candidate in huggingface_candidates.splitlines()]
+#                    huggingface_candidates = [re.sub(r"[^a-zA-Z ]", "", candidate).strip() for candidate in huggingface_candidates.splitlines()]
                     # Remove empty strings
-                    huggingface_candidates = [candidate for candidate in huggingface_candidates if candidate]
+#                    huggingface_candidates = [candidate for candidate in huggingface_candidates if candidate]
+                    # Extract the part after the last occurrence of "A:"
+                    last_a_match = huggingface_candidates.rsplit("A:", 1)[-1]
 
+                    # Remove any trailing period and split into a list of entities
+                    huggingface_candidates = [entity.strip() for entity in last_a_match.strip(".").split(",")]
+                    print("HFCD:")
+                    print(huggingface_candidates)
                     unique_candidates.update(huggingface_candidates)
             except Exception as e:
                 print(f"Hugging Face API error: {e}")
@@ -437,12 +446,13 @@ class COT:
     
     def calculate_probs(self, node: GuesserNode, base = None):
         if len(node.children) == 0:
-            return dict.values(node.reduction_score)
+            return list(node.reduction_score.values())
         
         final_scores = []
         for child in node.children:
             for grandchild in child.children:
-                final_scores += [node.reduction_score[child.value] * x for x in self.calculate_probs(grandchild)]
+                final_scores += [node.reduction_score[child.value] * x for x in list(self.calculate_probs(grandchild))]
+        print(final_scores)
         
         return final_scores
 
