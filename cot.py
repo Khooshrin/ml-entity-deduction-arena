@@ -13,10 +13,10 @@ class Node:
     ) -> None:
         self.parent = parent
         self.children = children
-    
+
     def add_children(self, children):
         self.children = self.children + children
-    
+
     def set_parent(self, parent):
         self.parent = parent
 
@@ -41,7 +41,7 @@ class AnswererNode(Node):
 
 class GuesserModel:
     def make_guess(self, messages):
-        pass 
+        pass
     def answer_prompt(self, prompt, max_tokens):
         pass
 
@@ -57,7 +57,7 @@ class ClaudeGuesser(GuesserModel):
         self.anthropic_api = anthropic_api
         self.temperature = temperature
         self.max_tokens_to_sample = max_tokens_to_sample
-    
+
     def make_guess(self, messages):
         prompt = ""
         for item in messages:
@@ -65,11 +65,11 @@ class ClaudeGuesser(GuesserModel):
                 prompt += f"{HUMAN_PROMPT} {item['content']}"
             elif item["role"].upper() == "ASSISTANT":
                 prompt += f"{AI_PROMPT} {item['content']}"
-        
+
         prompt += f"{AI_PROMPT}"
 
         return self.answer_prompt(prompt, 256)
-    
+
     def answer_prompt(self, prompt, max_tokens):
         completion = self.anthropic_api.completions.create(
             model=self.model,
@@ -90,12 +90,11 @@ class HuggingFaceGuesser(GuesserModel):
     ):
         self.tokenizer = tokenizer
         self.model = model
-        self.kargs = kargs 
+        self.kargs = kargs
         self.guesser_prompt = guesser_prompt
-    
+
     def make_guess(self, messages):
         prompt = self.dialog_history(messages) + " ASSISTANT:"
-        print(prompt)
         input_ids = torch.tensor(
             [self.tokenizer.encode(prompt, add_special_tokens=True)]
         )  # TODO check if huggingface is using the same format.
@@ -113,7 +112,7 @@ class HuggingFaceGuesser(GuesserModel):
                 .split("</s>")[0]
                 .split("USER")[0]
                 .lstrip()
-                .strip() 
+                .strip()
             )
 
 
@@ -126,26 +125,22 @@ class HuggingFaceGuesser(GuesserModel):
         attention_mask = None
 
         kargs_copy = self.kargs.copy()
-        
+
         if max_tokens:
             kargs_copy["max_new_tokens"] = max_tokens
 
         with torch.no_grad():
             gen = self.model.generate(
                 input_ids=input_ids,
-                attention_mask=attention_mask,
                 **self.kargs,
             )
             gen_str = (
-                self.tokenizer.decode(gen[0][input_ids[0].shape[0] :])
-                .split("</s>")[0]
-                .lstrip()
-                .strip() 
+                self.tokenizer.decode(gen[0],skip_special_tokens=True)
             )
 
 
             return gen_str
-    
+
     def dialog_history(self, messages):
         history = self.guesser_prompt + " "
         for item in messages:
@@ -164,18 +159,18 @@ class OpenAIGuesser(GuesserModel):
         max_tokens = 64,
         n = 1,
         stop = None,
-    ): 
+    ):
         self.api_base = api_base
         self.model = model
         self.temperature = temperature,
         self.max_tokens = max_tokens
         self.n = n
-        self.stop = stop 
+        self.stop = stop
         openai.api_base = self.api_base
 
     def make_guess(self, messages):
         return self.answer_prompt(self, messages, self.max_tokens)
-    
+
     def answer_prompt(self, prompt, max_tokens):
         response = openai.ChatCompletion.create(
             model=self.model,
@@ -186,7 +181,7 @@ class OpenAIGuesser(GuesserModel):
             temperature=self.temperature,
         )
         return response.choices[0].message.to_dict()["content"].strip()
-    
+
 
 class COT:
     def __init__(
@@ -210,12 +205,12 @@ class COT:
             self.depth = cot_kargs["depth"]
         else:
             self.depth = 1
-        
+
         if "width" in cot_kargs:
             self.width = cot_kargs["width"]
         else:
             self.width = 5
-        
+
         if "top_n" in cot_kargs:
             self.top_n = cot_kargs["top_n"]
         else:
@@ -223,7 +218,7 @@ class COT:
         self.num_turns = num_turns
         self.inference_count = 0
         self.recent_top_n = []
-        
+
     def guess(self, messages):
         tree = self.generate_tree(messages)
         response = self.choose_branch(tree)
@@ -233,12 +228,11 @@ class COT:
             "tree": tree,
             "inference_count": self.inference_count
         }
-    
+
     def generate_tree(self, messages):
         isGuesser = False
         root = AnswererNode(value="Root", messages=messages, top_n=self.generate_top_n(messages))
-        print("ROOT")
-        print("TOP_N: ", root.top_n)
+        print("Root's Top_n: ", root.top_n)
         queue = [root]
 
         for i in range(self.depth):
@@ -252,7 +246,6 @@ class COT:
                     print("GUESSES: ", (i, j), " ", guesses)
                     for guess in guesses:
                         child = GuesserNode(messages=messages + [guess], parent=node)
-                        # self.add_reduction_score(child, node)
                         queue.append(child)
                         child_list.append(child)
                 elif i != self.depth - 1:
@@ -265,7 +258,7 @@ class COT:
                     continue
                 node.add_children(child_list)
 
-        
+
         return root
 
     def choose_branch(self, tree):
@@ -280,25 +273,12 @@ class COT:
                     unique_candidates.update(current_node.top_n)
                 queue.extend(current_node.children)
             return len(unique_candidates)
-        
-        # best_branch = None
-        # max_score = float('-inf')
-        
-        # for child in tree.children:
-        #     probs = self.calculate_probs(child)
-        #     if len(probs) == 0:
-        #         continue
-        #     score = entropy(self.calculate_probs(child))
-        #     print(child, score)
-        #     if score > max_score:
-        #         max_score = score
-        #         best_branch = child
 
         potential_questions = []
-        
+
         for child in tree.children:
             potential_questions.append(child.messages[-1]["content"])
-        
+
         best_question = self.choose_question_based_on_reduction(potential_questions, tree.messages)
 
         best_branch = None
@@ -318,10 +298,10 @@ class COT:
             return OpenAIGuesser(api_base=guesser_api_base, model=guesser_model, temperature=temperature)
         else:
             return HuggingFaceGuesser(vicuna_prompt, guesser_tokenizer, guesser_model, guesser_kargs)
-        
+
 
     def generate_guesses(self, messages, node, k):
-        # TODO: Given a set of messages and a parent node generate a guess. Make sure to decide whether to guess an entity or ask a question in this function 
+        # TODO: Given a set of messages and a parent node generate a guess. Make sure to decide whether to guess an entity or ask a question in this function
         # based on the previous top-n candidates of the ancestor answerer nodes and whether this is the last guess or not
         if self.recent_top_n and len(self.recent_top_n) > 5:
             for candidate in node.top_n:
@@ -329,55 +309,24 @@ class COT:
                     guess_content = f"Is it a/an {candidate}?"
                     self.inference_count += 1
                     return [{"role": "assistant", "content": guess_content}]
-        
+
         def generate_20_questions_prompt(candidates):
-            """
-            Generates a prompt for a 20 Questions game using a list of candidates.
-
-            Parameters:
-                candidates (list): A list of candidate names or entities.
-
-            Returns:
-                str: The formatted prompt for the game.
-            """
-            prompt = f"""
-            Q: We are playing the game of 20 Questions. Below is a list of candidates that could be the hidden entity. 
-            Your task is to generate **yes/no/maybe** questions that help narrow down the possibilities and identify 
-            the hidden entity efficiently.
-
-            **Candidates:**
-            {', '.join(candidates)}
-
-            **Task:**
-            Based on the list of candidates, generate a series of strategic **yes/no/maybe** questions. These questions should:
-            1. Help eliminate multiple candidates with each question.
-            2. Be specific enough to differentiate among the candidates.
-
-            For example:
-            - "Is the entity known for [specific trait or role]?"
-            - "Does the entity have [specific characteristic]?"
-            - "Is the entity associated with [specific context or activity]?"
-
-            Generate **10** to guide the game. Ensure the questions are relevant and progressively help narrow down the hidden entity. 
-
-            A: 
-
-            1.
-            """
+            prompt = "We are playing a game where you have to deduce the hidden entity. Following is a list of potential hidden entities: " + str({', '.join(candidates)}) + ". Generate 5 yes/no/maybe questions that help identify the hidden entity as a comma separated list.\n"
             return prompt
-    
-        prompt = generate_20_questions_prompt(node.top_n)
-        potential_questions = self.guesser_model.answer_prompt(prompt, 1000)
-        potential_questions = potential_questions.split("A:")[1].strip()
 
-        # Get a list of unique questions from potential questions. Questions look like this: 1. Is it a person?
-        potential_questions = re.findall(r'(?:\d+\.\s*)?(.*?\?)', potential_questions)
+        prompt = generate_20_questions_prompt(node.top_n)
+        print(f"Prompt: {prompt}")
+        potential_questions = self.guesser_model.answer_prompt(prompt, 1000)
+        print(f"Potential Questions: {potential_questions}")
+        potential_questions = potential_questions.split("\n")
+
         potential_questions = [q.strip() for q in potential_questions]
-        print(potential_questions)
+        potential_questions = potential_questions[2:]
+        print(f"Questions Only: {potential_questions}")
         # Ensure unique questions
         potential_questions = list(set(potential_questions))[:k]  # Limit to 10 unique questions
         return [{"role": "assistant", "content": question or "Unable to determine the next best question."} for question in potential_questions]
-    
+
     def choose_question_based_on_reduction(self, potential_questions, messages):
         best_question = None
         max_reduction = -1
@@ -397,10 +346,10 @@ class COT:
             if reduction_score > max_reduction:
                 max_reduction = reduction_score
                 best_question = question
-        
+
         return best_question
 
-    
+
     def add_reduction_score(self, guess_node: GuesserNode, answerer_node: AnswererNode, base = None):
         top_n = answerer_node.top_n
         answers = []
@@ -408,7 +357,7 @@ class COT:
         for elem in top_n:
             answer = self.guesser_model.answer_prompt(f"Q: For ${elem}, answer the question: ${guess_node.messages[-1]['content']} with Yes/No/Maybe \n A: ", 6)
             answers.append(answer)
-        
+
         values, counts = np.unique(answers, return_counts=True)
         total = sum(counts)
         guess_node.reduction_score = {}
@@ -462,32 +411,19 @@ class COT:
 
         elif isinstance(self.guesser_model, HuggingFaceGuesser):
             # Hugging Face model execution
-#            prompt = "Message History: " + self.guesser_model.dialog_history(messages) + " \n Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities with every entity on a separate line."
-            prompt = "Message History: " + self.guesser_model.dialog_history(messages) +  "Q: Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities. Give your response starting with A: and then a comma separated list of the entities.\n"
+            prompt = "Message History: " + self.guesser_model.dialog_history(messages) +  ". Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities as a comma separated list starting with A:.\n"
             input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.base_model.device)
 
             try:
                 with torch.no_grad():
                     gen = self.guesser_model.model.generate(input_ids=input_ids, max_length=2000, temperature=0.8, repetition_penalty=1.0, do_sample=True)
-#                    print(f"Shape of gen: {gen.size()}")
-#                    for i in range(0, len(gen)):
                     huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True)
-                    print("CD:")
-                    print(huggingface_candidates)
-                    #print(f"Shape of candidates: {huggingface_candidates.size()}")
-                    # Get the part of the response after the prompt
-#                    huggingface_candidates = huggingface_candidates.split("A: ")[1]
-                    # Split lines and add unique entries to the set while removing numbers, special characters, and leading/trailing whitespace
-#                    huggingface_candidates = [re.sub(r"[^a-zA-Z ]", "", candidate).strip() for candidate in huggingface_candidates.splitlines()]
-                    # Remove empty strings
-#                    huggingface_candidates = [candidate for candidate in huggingface_candidates if candidate]
-                    # Extract the part after the last occurrence of "A:"
+                    print(f"Response to Generate Entities: {huggingface_candidates}")
                     last_a_match = huggingface_candidates.rsplit("A:", 1)[-1]
 
                     # Remove any trailing period and split into a list of entities
                     huggingface_candidates = [entity.strip() for entity in last_a_match.strip(".").split(",")]
-                    print("HFCD:")
-                    print(huggingface_candidates)
+                    print(f"Entities Only: {huggingface_candidates}")
                     unique_candidates.update(huggingface_candidates)
             except Exception as e:
                 print(f"Hugging Face API error: {e}")
@@ -499,16 +435,15 @@ class COT:
             self.recent_top_n.pop(0)
 
         return top_n
-    
+
     def calculate_probs(self, node: GuesserNode, base = None):
         if len(node.children) == 0:
             return list(node.reduction_score.values())
-        
+
         final_scores = []
         for child in node.children:
             for grandchild in child.children:
                 final_scores += [node.reduction_score[child.value] * x for x in list(self.calculate_probs(grandchild))]
-        print(final_scores)
-        
-        return final_scores
+        print(f"Final Scores: {final_scores}")
 
+        return final_scores
