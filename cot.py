@@ -318,7 +318,7 @@ class COT:
                     return [{"role": "assistant", "content": guess_content}]
 
         def generate_20_questions_prompt(candidates):
-            prompt = prompt = "We are playing a 20 Questions game where you must deduce the hidden entity. Following is the conversation history:\n" + self.guesser_model.dialog_history(messages) + "\nGenerate 10 questions that can be answered only using yes, no or maybe as a numbered list.\nASSISTANT:"
+            prompt = prompt = "We are playing a 20 Questions game where you must deduce the hidden entity. Following is the conversation history:\n" + self.guesser_model.dialog_history(messages) + "\nFollowing are the possible entities: " + str(", ".join(candidates)) + ".\nGenerate 10 questions that are not a part of the conversation history and can be answered only using yes, no or maybe as a numbered list.\nASSISTANT:"
             return prompt
         
         def extract_questions(output):
