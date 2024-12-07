@@ -132,7 +132,8 @@ class HuggingFaceGuesser(GuesserModel):
         with torch.no_grad():
             gen = self.model.generate(
                 input_ids=input_ids,
-                **self.kargs,
+                max_new_tokens = 300,
+#                **self.kargs,
             )
             gen_str = (
                 self.tokenizer.decode(gen[0],skip_special_tokens=True)
@@ -220,15 +221,21 @@ class COT:
         self.recent_top_n = []
 
     def guess(self, messages):
-        tree = self.generate_tree(messages)
-        response = self.choose_branch(tree)
-        return {
-            "role": "assistant",
-            "content": response,
-            "tree": tree,
-            "inference_count": self.inference_count
-        }
-
+        cnt = 0
+        while(True):
+            cnt += 1
+            tree = self.generate_tree(messages)
+            response = self.choose_branch(tree)
+            if response != "Unable to determine a confident next question.":
+                return {
+                    "role": "assistant",
+                    "content": response,
+                    "tree": tree,
+                    "inference_count": self.inference_count
+                }
+            if cnt > 10:
+                print("Unable to determine a confident next question.")
+                exit()
     def generate_tree(self, messages):
         isGuesser = False
         root = AnswererNode(value="Root", messages=messages, top_n=self.generate_top_n(messages))
@@ -311,44 +318,78 @@ class COT:
                     return [{"role": "assistant", "content": guess_content}]
 
         def generate_20_questions_prompt(candidates):
-            prompt = "We are playing a game where you have to deduce the hidden entity. Following is a list of potential hidden entities: " + str({', '.join(candidates)}) + ". Generate 5 yes/no/maybe questions that help identify the hidden entity as a comma separated list.\n"
+            prompt = prompt = "We are playing a 20 Questions game where you must deduce the hidden entity. Following is the conversation history:\n" + self.guesser_model.dialog_history(messages) + "\nGenerate 10 questions that can be answered only using yes, no or maybe as a numbered list.\nASSISTANT:"
             return prompt
+        
+        def extract_questions(output):
+            # Split the output into lines
+            lines = output.split("ASSISTANT:")[-1]
+            print(f"ASSISTANT: Split: {lines}")
+            lines = lines.split("\n")
+            print(f"New Line Split: {lines}")
+            questions = []
+
+            # Iterate through lines to extract questions
+            for line in lines:
+                # Match lines that start with a number followed by a period and a space
+                if line.strip() and line.strip()[0].isdigit() and line.strip()[1] == '.':
+                    # Extract the question by removing the numbering
+                    question = line.strip()[2:].strip()
+                    questions.append(question)
+
+            return questions
 
         prompt = generate_20_questions_prompt(node.top_n)
         print(f"Prompt: {prompt}")
         potential_questions = self.guesser_model.answer_prompt(prompt, 1000)
         print(f"Potential Questions: {potential_questions}")
-        potential_questions = potential_questions.split("\n")
-
-        potential_questions = [q.strip() for q in potential_questions]
-        potential_questions = potential_questions[2:]
+        potential_questions = extract_questions(potential_questions)
         print(f"Questions Only: {potential_questions}")
         # Ensure unique questions
         potential_questions = list(set(potential_questions))[:k]  # Limit to 10 unique questions
-        return [{"role": "assistant", "content": question or "Unable to determine the next best question."} for question in potential_questions]
+        return [{"role": "assistant", "content": question} for question in potential_questions]
+
+    # def choose_question_based_on_reduction(self, potential_questions, messages):
+    #     best_question = None
+    #     max_reduction = -1
+
+    #     for question in potential_questions:
+    #         reduction_score = 0  # Track subspace reduction for this question
+
+    #         # For each possible answer, simulate how it would impact subspace reduction
+    #         for answer in ["Yes", "No", "Maybe"]:
+    #             simulated_messages = messages + [{"role": "assistant", "content": question}, {"role": "user", "content": answer}]
+    #             top_n_candidates = self.generate_top_n(simulated_messages)
+
+    #             # Calculate a reduction score based on the uniqueness of the remaining candidates
+    #             reduction_score += len(set(top_n_candidates))
+
+    #         # If this question has the highest reduction score, select it as the best
+    #         if reduction_score > max_reduction:
+    #             max_reduction = reduction_score
+    #             best_question = question
+
+    #     return best_question
 
     def choose_question_based_on_reduction(self, potential_questions, messages):
-        best_question = None
-        max_reduction = -1
-
-        for question in potential_questions:
-            reduction_score = 0  # Track subspace reduction for this question
-
-            # For each possible answer, simulate how it would impact subspace reduction
-            for answer in ["Yes", "No", "Maybe"]:
-                simulated_messages = messages + [{"role": "assistant", "content": question}, {"role": "user", "content": answer}]
-                top_n_candidates = self.generate_top_n(simulated_messages)
-
-                # Calculate a reduction score based on the uniqueness of the remaining candidates
-                reduction_score += len(set(top_n_candidates))
-
-            # If this question has the highest reduction score, select it as the best
-            if reduction_score > max_reduction:
-                max_reduction = reduction_score
-                best_question = question
-
-        return best_question
-
+        dialog_history = self.guesser_model.dialog_history(messages)
+    
+        # Ensure the selected question is not part of the dialog history
+        potential_questions_sorted = sorted(
+            potential_questions,
+            key=lambda q: sum(len(set(self.generate_top_n(messages + [{"role": "assistant", "content": q}, {"role": "user", "content": a}])))
+                              for a in ["Yes", "No", "Maybe"]),
+            reverse=True
+        )
+        # Find the next best question not in dialog history
+        print(f"Sorted questions: {potential_questions_sorted}")
+        for question in potential_questions_sorted:
+            if question not in dialog_history:
+                print(f"Selected question: {question}")
+                return question
+    
+        return None
+    
 
     def add_reduction_score(self, guess_node: GuesserNode, answerer_node: AnswererNode, base = None):
         top_n = answerer_node.top_n
@@ -376,6 +417,21 @@ class COT:
     def generate_top_n(self, messages):
         # TODO: Given a set of messages, generate the top n best candidates for the entity
         unique_candidates = set()  # Use a set to keep only unique entities
+        def extract_entities(output):
+            # Split the output into lines
+            lines = output.split("ASSISTANT:")[-1]
+            lines = lines.split("\n")
+            questions = []
+
+            # Iterate through lines to extract questions
+            for line in lines:
+                # Match lines that start with a number followed by a period and a space
+                if line.strip() and line.strip()[0].isdigit() and line.strip()[1] == '.':
+                    # Extract the question by removing the numbering
+                    question = line.strip()[2:].strip()
+                    questions.append(question)
+
+            return questions
 
         # Determine which model is being used and query it for top entities
         if isinstance(self.guesser_model, ClaudeGuesser):
@@ -411,18 +467,15 @@ class COT:
 
         elif isinstance(self.guesser_model, HuggingFaceGuesser):
             # Hugging Face model execution
-            prompt = "Message History: " + self.guesser_model.dialog_history(messages) +  ". Above is the game conversation till now. Predict the unique top " + str(self.top_n) + " entities as a comma separated list starting with A:.\n"
+            prompt = self.guesser_model.dialog_history(messages) + " The previous text contains the conversation history of the game. Predict the unique top " + str(self.top_n) + " entities most likely to be the hidden entity as a numbered list.\nASSISTANT:"
             input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.base_model.device)
 
             try:
                 with torch.no_grad():
-                    gen = self.guesser_model.model.generate(input_ids=input_ids, max_length=2000, temperature=0.8, repetition_penalty=1.0, do_sample=True)
+                    gen = self.guesser_model.model.generate(input_ids=input_ids, max_new_tokens=200, temperature=0.8, repetition_penalty=1.0, do_sample=True)
                     huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True)
                     print(f"Response to Generate Entities: {huggingface_candidates}")
-                    last_a_match = huggingface_candidates.rsplit("A:", 1)[-1]
-
-                    # Remove any trailing period and split into a list of entities
-                    huggingface_candidates = [entity.strip() for entity in last_a_match.strip(".").split(",")]
+                    huggingface_candidates = extract_entities(huggingface_candidates)
                     print(f"Entities Only: {huggingface_candidates}")
                     unique_candidates.update(huggingface_candidates)
             except Exception as e:
