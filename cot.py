@@ -416,22 +416,16 @@ class COT:
 
     def generate_top_n(self, messages):
         # TODO: Given a set of messages, generate the top n best candidates for the entity
-        unique_candidates = set()  # Use a set to keep only unique entities
+        unique_candidates = {}
         def extract_entities(output):
             # Split the output into lines
             lines = output.split("ASSISTANT:")[-1]
-            lines = lines.split("\n")
-            questions = []
+            pattern = r'\d+[.)]\s+(.*)'
+            matches = re.findall(pattern, lines)
+            print(matches)
+            
 
-            # Iterate through lines to extract questions
-            for line in lines:
-                # Match lines that start with a number followed by a period and a space
-                if line.strip() and line.strip()[0].isdigit() and line.strip()[1] == '.':
-                    # Extract the question by removing the numbering
-                    question = line.strip()[2:].strip()
-                    questions.append(question)
-
-            return questions
+            return matches
 
         # Determine which model is being used and query it for top entities
         if isinstance(self.guesser_model, ClaudeGuesser):
@@ -467,22 +461,53 @@ class COT:
 
         elif isinstance(self.guesser_model, HuggingFaceGuesser):
             # Hugging Face model execution
-            prompt = self.guesser_model.dialog_history(messages) + " The previous text contains the conversation history of the game. Predict the unique top " + str(self.top_n) + " entities most likely to be the hidden entity as a numbered list.\nASSISTANT:"
+            prompt = f"""
+            USER: 
+            You are playing a 20 Questions game where you must deduce the hidden entity. I will provide you with the previous conversation history of the game
+            and your task to think of entities that could be the hidden entity.
+            
+            This is the previous conversation history of the game:
+            "{self.guesser_model.dialog_history(messages)}"
+            
+            
+            Use the information gained from questions and answers in the previous conversation history to predict the unique top {self.top_n} entities most 
+            likely to be the hidden entity as a numbered list. Make sure to provide the entities in the order of likelihood and ensure each entity listed is NOT a question or phrase.
+            
+            An example of a valid response would be:
+            
+            1. Apple
+            2. Chair
+            3. Dog
+            4. Car
+            5. Tree
+            6. Ball
+            7. House
+            8. Book
+            9. Bird
+            10. Bottle
+            
+            DO NOT COPY THE EXAMPLE RESPONSE. PROVIDE YOUR OWN RESPONSE.
+            
+            ASSISTANT:
+            """
             input_ids = torch.tensor([self.guesser_model.tokenizer.encode(prompt, add_special_tokens=True)]).to(self.guesser_model.model.base_model.device)
 
             try:
                 with torch.no_grad():
                     gen = self.guesser_model.model.generate(input_ids=input_ids, max_new_tokens=200, temperature=0.8, repetition_penalty=1.0, do_sample=True)
                     huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True)
-                    print(f"Response to Generate Entities: {huggingface_candidates}")
                     huggingface_candidates = extract_entities(huggingface_candidates)
-                    print(f"Entities Only: {huggingface_candidates}")
-                    unique_candidates.update(huggingface_candidates)
+
+                print(f"Entities Only: {huggingface_candidates}")
+                for i, entity in enumerate(huggingface_candidates):
+                    unique_candidates[entity] = min(unique_candidates.get(entity, float('inf')), i)
+                        
             except Exception as e:
                 print(f"Hugging Face API error: {e}")
 
         # Convert unique set to a sorted list and limit to top_n
-        top_n = list(unique_candidates)[:self.top_n]
+        print(sorted(unique_candidates.items(), key=lambda x: x[1]))
+        top_n = [x[0] for x in sorted(unique_candidates.items(), key=lambda x: x[1])[:self.top_n]]
         self.recent_top_n.append(top_n)
         if len(self.recent_top_n) > 5:
             self.recent_top_n.pop(0)
