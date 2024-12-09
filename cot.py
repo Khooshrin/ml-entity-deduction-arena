@@ -182,6 +182,15 @@ class OpenAIGuesser(GuesserModel):
             temperature=self.temperature,
         )
         return response.choices[0].message.to_dict()["content"].strip()
+    
+    def dialog_history(self, messages):
+        history = ""
+        for item in messages:
+            if item["role"].upper() == "USER":
+                history += "USER: " + item["content"]
+            elif item["role"].upper() == "ASSISTANT":
+                history += " " + "ASSISTANT: " + item["content"] + "</s>"
+        return history
 
 
 class COT:
@@ -239,7 +248,7 @@ class COT:
     def generate_tree(self, messages):
         isGuesser = False
         root = AnswererNode(value="Root", messages=messages, top_n=self.generate_top_n(messages))
-        print("Root's Top_n: ", root.top_n)
+        print("INITIAL TOP_N: ", root.top_n)
         queue = [root]
 
         for i in range(self.depth):
@@ -250,7 +259,7 @@ class COT:
                 child_list = []
                 if isGuesser:
                     guesses = self.generate_guesses(messages, node, self.width)
-                    print("GUESSES: ", (i, j), " ", guesses)
+                    print("GUESSES: ", guesses)
                     for guess in guesses:
                         child = GuesserNode(messages=messages + [guess], parent=node)
                         queue.append(child)
@@ -286,7 +295,7 @@ class COT:
         for child in tree.children:
             potential_questions.append(child.messages[-1]["content"])
 
-        best_question = self.choose_question_based_on_reduction(potential_questions, tree.messages)
+        best_question = self.choose_question_based_on_reduction(potential_questions, tree.messages, tree.top_n)
 
         best_branch = None
         for child in tree.children:
@@ -302,7 +311,7 @@ class COT:
         ):
             return ClaudeGuesser(guesser_model, anthropic_api=anthropic_api, temperature=temperature)
         elif openai_api:
-            return OpenAIGuesser(api_base=guesser_api_base, model=guesser_model, temperature=temperature)
+            return OpenAIGuesser(api_base=guesser_api_base, model=guesser_model_name, temperature=temperature)
         else:
             return HuggingFaceGuesser(vicuna_prompt, guesser_tokenizer, guesser_model, guesser_kargs)
 
@@ -324,9 +333,7 @@ class COT:
         def extract_questions(output):
             # Split the output into lines
             lines = output.split("ASSISTANT:")[-1]
-            print(f"ASSISTANT: Split: {lines}")
             lines = lines.split("\n")
-            print(f"New Line Split: {lines}")
             questions = []
 
             # Iterate through lines to extract questions
@@ -342,9 +349,7 @@ class COT:
         prompt = generate_20_questions_prompt(node.top_n)
         print(f"Prompt: {prompt}")
         potential_questions = self.guesser_model.answer_prompt(prompt, 1000)
-        print(f"Potential Questions: {potential_questions}")
         potential_questions = extract_questions(potential_questions)
-        print(f"Questions Only: {potential_questions}")
         # Ensure unique questions
         potential_questions = list(set(potential_questions))[:k]  # Limit to 10 unique questions
         return [{"role": "assistant", "content": question} for question in potential_questions]
@@ -371,13 +376,22 @@ class COT:
 
     #     return best_question
 
-    def choose_question_based_on_reduction(self, potential_questions, messages):
+    def choose_question_based_on_reduction(self, potential_questions, messages, current_top_n):
         dialog_history = self.guesser_model.dialog_history(messages)
+        
+        def get_reduction(new_top_n, old_top_n, a, q):
+            # Find the number of candidates in the new top_n that are not in the old top_n
+            print("QUESTION: ", q)
+            print("ANSWER: ", a)
+            print("NEW_TOP_N: ", new_top_n)
+            print("REDUCTION: ", len(set(new_top_n) - set(old_top_n)))
+            
+            return len(set(new_top_n) - set(old_top_n))
     
         # Ensure the selected question is not part of the dialog history
         potential_questions_sorted = sorted(
             potential_questions,
-            key=lambda q: sum(len(set(self.generate_top_n(messages + [{"role": "assistant", "content": q}, {"role": "user", "content": a}])))
+            key=lambda q: sum(get_reduction(set(self.generate_top_n(messages + [{"role": "assistant", "content": q}, {"role": "user", "content": a}])), current_top_n, a, q)
                               for a in ["Yes", "No", "Maybe"]),
             reverse=True
         )
@@ -422,7 +436,6 @@ class COT:
             lines = output.split("ASSISTANT:")[-1]
             pattern = r'\d+[.)]\s+(.*)'
             matches = re.findall(pattern, lines)
-            print(matches)
             
 
             return matches
@@ -498,7 +511,6 @@ class COT:
                     huggingface_candidates = self.guesser_model.tokenizer.decode(gen[0], skip_special_tokens=True)
                     huggingface_candidates = extract_entities(huggingface_candidates)
 
-                print(f"Entities Only: {huggingface_candidates}")
                 for i, entity in enumerate(huggingface_candidates):
                     unique_candidates[entity] = min(unique_candidates.get(entity, float('inf')), i)
                         
@@ -506,7 +518,6 @@ class COT:
                 print(f"Hugging Face API error: {e}")
 
         # Convert unique set to a sorted list and limit to top_n
-        print(sorted(unique_candidates.items(), key=lambda x: x[1]))
         top_n = [x[0] for x in sorted(unique_candidates.items(), key=lambda x: x[1])[:self.top_n]]
         self.recent_top_n.append(top_n)
         if len(self.recent_top_n) > 5:
