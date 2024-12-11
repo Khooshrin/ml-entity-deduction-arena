@@ -217,12 +217,12 @@ class COT:
             self.depth = 1
 
         if "width" in cot_kargs:
-            self.width = cot_kargs["width"]
+            self.width = int(cot_kargs["width"])
         else:
             self.width = 5
 
         if "top_n" in cot_kargs:
-            self.top_n = cot_kargs["top_n"]
+            self.top_n = int(cot_kargs["top_n"])
         else:
             self.top_n = 10
         self.num_turns = num_turns

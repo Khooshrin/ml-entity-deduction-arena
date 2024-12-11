@@ -12,8 +12,6 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 LOGGER = logging.getLogger(__name__)
 
 def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
-#def run_chat(input_file_path, answerer_model, guesser_model, suffix, turns, temp, num_sessions, openai_api, item, guesser_tokenizer=None):
-    # Function implementation
     if not args.openai_api:
         guesser_kargs = {
             "max_new_tokens": 64,
@@ -34,7 +32,9 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
         temperature=args.temp,
         openai_api=args.openai_api,
         guesser_kargs=guesser_kargs,
-        cot=True
+        cot=True,
+        top_n = args.topn,
+        question = args.question
     )
 
     for s in tqdm.tqdm(
@@ -42,7 +42,7 @@ def run_chat(args, item, guesser_model=None, guesser_tokenizer=None):
     ):
         file_name = os.path.join(
             os.path.dirname(args.input),
-            args.guesser_model + f"_{args.suffix}",
+            args.guesser_model + f"_{args.suffix}" + f"_top{args.topn}" + f"_question{args.question}",
             f"_session_{s}" if args.num_sessions > 1 else "",
         )
         if not os.path.exists(os.path.join(file_name, f"{item}.txt")):
@@ -66,6 +66,8 @@ if __name__ == "__main__":
         "--guesser_model", "-g", default="gpt-3.5-turbo", help="guesser model"
     )
     parser.add_argument("--suffix", "-s", default="vanilla", help="prefix")
+    parser.add_argument("--topn", "-t", default=10, help="No. of entities to be generated in cot")
+    parser.add_argument("--question", "-q", default=10, help="No. of questions to be generated in cot")
     parser.add_argument("--user", default=None, help="User name for user mode")
     parser.add_argument("--turns", type=int, default=20, help="Set the maximum number of turns for the game")
     parser.add_argument("--temp", type=float, default=0.8, help="Temperature")

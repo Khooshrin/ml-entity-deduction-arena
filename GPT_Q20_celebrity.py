@@ -31,12 +31,15 @@ def run_chat(args, name, background, guesser_model=None, guesser_tokenizer=None)
         num_turns=args.turns,
         temperature=args.temp,
         openai_api=args.openai_api,
-        guesser_kargs=guesser_kargs
+        guesser_kargs=guesser_kargs,
+        cot=True,
+        top_n = args.topn,
+        question = args.question
     )
 
     for s in range(args.num_sessions):
         game.game_play(user_mode=args.user)
-        game.save_session(path=os.path.join(os.path.dirname(args.input), args.guesser_model + f"_{args.suffix}",  f"session_{s}" if args.num_sessions>1 else ""))
+        game.save_session(path=os.path.join(os.path.dirname(args.input), args.guesser_model + f"_{args.suffix}" + f"_top{args.topn}" + f"_question{args.question}",  f"session_{s}" if args.num_sessions>1 else ""))
     
 
 
@@ -51,6 +54,8 @@ if __name__ == "__main__":
         "--guesser_model", "-g", default="gpt-3.5-turbo", help="guesser model"
     )
     parser.add_argument("--suffix", "-s", default="vanilla", help="prefix")
+    parser.add_argument("--topn", "-t", default=10, help="No. of entities to be generated in cot")
+    parser.add_argument("--question", "-q", default=10, help="No. of questions to be generated in cot")
     parser.add_argument("--user", default=None, help="User name for user mode")
     parser.add_argument("--turns", type=int, default=20, help="Input file path")
     parser.add_argument("--temp", type=float, default=0.8, help="Temperature")

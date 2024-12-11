@@ -34,6 +34,8 @@ class Q20Game:
         openai_api_key: Optional[str] = None,
         guesser_kargs={},
         cot: bool = True,
+        top_n: int = 10,
+        question: int = 10,
         cot_kargs={},
     ) -> None:
         self.item = item
@@ -70,6 +72,8 @@ class Q20Game:
 
         self.guesser_messages = []
         if cot:
+            cot_kargs["top_n"] = int(top_n)
+            cot_kargs["width"] = int(question)
             self.cot = COT(
                 item, 
 #                answerer_model, 
